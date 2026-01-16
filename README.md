@@ -1,2 +1,2 @@
 # italian-public-contracts
-Ontology for Italian public contracts - Academic project
+Ontology for Italian public contracts - 4IZ441 Semestral Project
