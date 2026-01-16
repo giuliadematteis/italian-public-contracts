@@ -1,0 +1,1428 @@
+@prefix : <https://w3id.org/giuliadem/ipc/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pcapit: <https://w3id.org/italia/onto/PublicContract/> .
+@base <https://w3id.org/giuliadem/ipc/> .
+
+<https://w3id.org/giuliadem/ipc/> rdf:type owl:Ontology ;
+                                   dct:description "This ontology models the public procurement domain in Italy according to the Italian Public Contracts Code (D.lgs. n. 36/2023) and the National Database of Public Contracts (BDNCP)"@en ;
+                                   dct:identifier "https://w3id.org/giuliadem/ipc/" ;
+                                   dct:issued "2025-12-28"^^xsd:date ;
+                                   dct:language <http://publications.europa.eu/resource/authority/language/ENG> ,
+                                                <http://publications.europa.eu/resource/authority/language/ITA> ;
+                                   dct:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+                                   dct:modified "2026-01-15"^^xsd:date ;
+                                   dct:title "Italian Public Contracts Ontology (IPC)"@en ;
+                                   rdfs:comment "Ontology for Italian public contracts developed for 4IZ441 Semestral Project - Vysoká škola ekonomická v Praze."@en ;
+                                   rdfs:label "Ontology for Italian public contracts - GDM"@en ;
+                                   owl:versionInfo "1.0" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dct:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dct:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/language
+dct:language rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/giuliadem/ipc/title
+:title rdf:type owl:AnnotationProperty ;
+       rdfs:subPropertyOf rdfs:label ;
+       rdfs:range xsd:string .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/giuliadem/ipc/atCity
+:atCity rdf:type owl:ObjectProperty ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Lot
+                                    :Procedure
+                                    :PublicContract
+                                  )
+                    ] ;
+        rdfs:range <https://w3id.org/italia/onto/CLV/City> ;
+        rdfs:comment "Specifica il comune di riferimento."@it ,
+                     "Specifies the related city."@en ;
+        rdfs:label "at city"@en ,
+                   "presso comune"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/awardsContract
+:awardsContract rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isAwardedBy ;
+                rdfs:domain epo:Buyer ;
+                rdfs:range :PublicContract ;
+                rdfs:comment "Relation linking the authority (Buyer) to the specific contract it has awarded."@en ,
+                             "Relazione che lega l'autorità al contratto specifico che ha aggiudicato."@it ;
+                rdfs:label "affida contratto"@it ,
+                           "awards contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/awardsTo
+:awardsTo rdf:type owl:ObjectProperty ;
+          owl:inverseOf :winsProcedure .
+
+
+###  https://w3id.org/giuliadem/ipc/coversLot
+:coversLot rdf:type owl:ObjectProperty ;
+           rdfs:domain :Subcontract ;
+           rdfs:range :Lot ;
+           rdfs:comment "Indica che un subappalto copre uno o più lotti del contratto principale."@it ,
+                        "Indicates that a sub‑contract covers one or more specific lots of the primary contract."@en ;
+           rdfs:label "copre lotto"@it ,
+                      "covers lot"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/generatesContract
+:generatesContract rdf:type owl:ObjectProperty ;
+                   owl:inverseOf :isGeneratedBy ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Convention
+                                               :DynamicPurchasingSystem
+                                               :FrameworkAgreement
+                                             )
+                               ] ;
+                   rdfs:range :PublicContract ;
+                   rdfs:comment "Relationship linking a framework instrument or a purchasing system to the specific public contracts awarded under it."@en ,
+                                "Relazione che collega uno strumento quadro o un sistema di acquisizione ai singoli contratti specifici che vengono aggiudicati in sua attuazione."@it ;
+                   rdfs:label "genera contratto"@it ,
+                              "generates contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasAwardCriterion
+:hasAwardCriterion rdf:type owl:ObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Lot
+                                               :Procedure
+                                               :PublicContract
+                                             )
+                               ] ;
+                   rdfs:range :AwardCriterion ;
+                   rdfs:comment "Collega un lotto o un contratto pubblico al criterio di aggiudicazione adottato."@it ,
+                                "Relates a lot or public contract to the award criterion applied."@en ;
+                   rdfs:label "ha criterio di aggiudicazione"@it ,
+                              "has award criterion"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasAwardee
+:hasAwardee rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Lot
+                                        :Procedure
+                                        :PublicContract
+                                      )
+                        ] ;
+            rdfs:range :Awardee ;
+            rdfs:comment "Relation linking the procedure to the winning entity."@en ,
+                         "Relazione che collega la procedura al soggetto vincitore."@it ;
+            rdfs:label "ha aggiudicatario"@it ,
+                       "has awardee"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasCIG
+:hasCIG rdf:type owl:ObjectProperty ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :FrameworkAgreement
+                                    :Lot
+                                    :Procedure
+                                    :PublicContract
+                                  )
+                    ] ;
+        rdfs:range :CIG ;
+        rdfs:comment "Il codice identificativo unico (CIG) attribuito alla procedura di gara. È associato a ciascun lotto se la procedura è suddivisa in lotti, o alla procedura stessa se non sono presenti lotti."@it ,
+                     "The unique identifier code (CIG) assigned to the procurement procedure. It is associated with each lot if the procedure is subdivided into lots, or with the procedure itself if no lots exist."@en ;
+        rdfs:label "CIG"@en ,
+                   "CIG"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/hasCPV
+:hasCPV rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf pcapit:hasCPV ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Lot
+                                    :Procedure
+                                    :PublicContract
+                                  )
+                    ] ;
+        rdfs:range :CPV ;
+        rdfs:comment "Associa una procedura o un lotto a uno o più codici merceologici CPV."@it ,
+                     "Links a procedure or a lot to one or more CPV product codes."@en ;
+        rdfs:label "ha CPV"@it ,
+                   "has CPV"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasCUP
+:hasCUP rdf:type owl:ObjectProperty ;
+        rdfs:domain :Procedure ;
+        rdfs:range :CUP ;
+        rdfs:comment "Relationship linking a tender procedure to the investment project."@en ,
+                     "Relazione che lega la procedura di gara al progetto di investimento."@it ;
+        rdfs:label "ha CUP"@it ,
+                   "has CUP"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasCalled
+:hasCalled rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isCalledBy ;
+           rdfs:domain epo:Buyer ;
+           rdfs:range :Procedure ;
+           rdfs:comment "Collega un committente (stazione appaltante) alla procedura di appalto da esso indetta."@it ,
+                        "Relates a buyer (contracting authority) to the procurement procedure they have initiated."@en ;
+           rdfs:label "ha indetto"@it ,
+                      "has called"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasContractor
+:hasContractor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :isContractorOf ;
+               rdfs:domain :PublicContract ;
+               rdfs:range :EconomicOperator ;
+               rdfs:comment "Collega un contratto pubblico all'operatore economico che ne è parte in qualità di contraente."@it ,
+                            "Relates a public contract to the economic operator that is party to the contract as contractor."@en ;
+               rdfs:label "ha contraente"@it ,
+                          "has contractor"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasLegalForm
+:hasLegalForm rdf:type owl:ObjectProperty ;
+              rdfs:domain :EconomicOperator ;
+              rdfs:range <https://w3id.org/italia/onto/COV/LegalStatus> ;
+              rdfs:comment "Collega un operatore economico alla sua forma giuridica secondo la classificazione ISTAT"@it ,
+                           "Links an economic operator to its legal form according to the ISTAT classification"@en ;
+              rdfs:label "ha forma giuridica"@it ,
+                         "has legal form"@en ;
+              rdfs:seeAlso <https://w3id.org/italia/controlled-vocabulary/classifications-for-organizations/legal-status> .
+
+
+###  https://w3id.org/giuliadem/ipc/hasLifecyclePhase
+:hasLifecyclePhase rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Procedure ;
+                   rdfs:range :LifecyclePhase ;
+                   rdfs:comment "Associa una procedura di procurement alle sue fasi del ciclo di vita, dalla programmazione all’esecuzione."@it ,
+                                "Associates a procurement procedure with its phases in the life cycle, from programming to execution."@en ;
+                   rdfs:label "ha fase del ciclo di vita"@it ,
+                              "has lifecycle phase"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasLot
+:hasLot rdf:type owl:ObjectProperty ;
+        owl:inverseOf pcapit:hasContract ;
+        rdfs:domain :PublicContract ;
+        rdfs:range :Lot ;
+        rdfs:comment "Associa un contratto pubblico al lotto o ai lotti cui si riferisce o da cui deriva."@it ,
+                     "Associates a public contract with the lot or lots that it covers or derives from."@en ;
+        rdfs:label "ha lotto"@it ,
+                   "has lot"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasMainContractor
+:hasMainContractor rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Subcontract ;
+                   rdfs:range :EconomicOperator ;
+                   rdfs:comment "Collega un subappalto all'operatore economico che è l'appaltatore principale."@it ,
+                                "Relates a sub‑contract to the economic operator that is the main contractor."@en ;
+                   rdfs:label "ha operatore principale"@it ,
+                              "has main contractor"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasParticipationRole
+:hasParticipationRole rdf:type owl:ObjectProperty ;
+                      rdfs:domain :EconomicOperator ;
+                      rdfs:range :ParticipationRole ;
+                      rdfs:comment "Relationship specifying the legal status or role assumed by the economic operator within a specific procurement procedure."@en ,
+                                   "Relazione che specifica la veste giuridica o il ruolo assunto dall'operatore economico all'interno di una specifica procedura di gara."@it ;
+                      rdfs:label "ha ruolo di partecipazione"@it ,
+                                 "has participation role"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasProcedureType
+:hasProcedureType rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf pcapit:hasProcedureType ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Procedure
+                                              :PublicContract
+                                            )
+                              ] ;
+                  rdfs:range pcapit:ProcedureType ;
+                  rdfs:comment "Property specifying the method for selecting the contractor."@en ,
+                               "Proprietà che specifica la modalità di scelta del contraente."@it ;
+                  rdfs:label "ha tipo di procedura"@it ,
+                             "has procedure type"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasProvinceLocation
+:hasProvinceLocation rdf:type owl:ObjectProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Lot
+                                                 :Procedure
+                                                 :PublicContract
+                                               )
+                                 ] ;
+                     rdfs:range <https://w3id.org/italia/onto/CLV/Province> ;
+                     rdfs:comment "La provincia dove si svolge l'appalto."@it ,
+                                  "The province where the procurement takes place."@en ;
+                     rdfs:label "province of execution"@en ,
+                                "provincia di esecuzione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/hasRUP
+:hasRUP rdf:type owl:ObjectProperty ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Lot
+                                    :Procedure
+                                    :PublicContract
+                                  )
+                    ] ;
+        rdfs:range :RUP ;
+        rdfs:label "ha RUP"@it ,
+                   "has RUP"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasSector
+:hasSector rdf:type owl:ObjectProperty ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :Lot
+                                       :Procedure
+                                       :PublicContract
+                                     )
+                       ] ;
+           rdfs:range :ProcurementSector ;
+           rdfs:comment "Property linking a procurement procedure or a contract to its legislative reference sector (ordinary or special)."@en ,
+                        "Proprietà che collega una procedura di appalto o un contratto al suo settore di riferimento legislativo (ordinario o speciale)."@it ;
+           rdfs:label "ha settore"@it ,
+                      "has sector"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasSubcontractor
+:hasSubcontractor rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Subcontract ;
+                  rdfs:range :EconomicOperator ;
+                  rdfs:comment "Collega un subappalto all'operatore economico che lo esegue come subappaltatore."@it ,
+                               "Relates a sub‑contract to the economic operator that performs it as subcontractor."@en ;
+                  rdfs:label "ha subappaltatore"@it ,
+                             "has subcontractor"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasThresholdStatus
+:hasThresholdStatus rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Procedure ;
+                    rdfs:range :Threshold ;
+                    rdfs:comment "Indica se la procedura è sopra o sotto la soglia di rilevanza europea."@it ,
+                                 "Indicates whether the procedure is above or below the EU relevance threshold."@en ;
+                    rdfs:label "ha stato soglia"@it ,
+                               "has threshold status"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/hasWorkSupervisor
+:hasWorkSupervisor rdf:type owl:ObjectProperty ;
+                   rdfs:domain :WorksContract ;
+                   rdfs:range :WorkSupervisor ;
+                   rdfs:comment "Relationship linking a public works contract to the professional in charge of work supervision."@en ,
+                                "Relazione che collega un contratto di lavori pubblici al professionista incaricato della direzione dei lavori."@it ;
+                   rdfs:label "ha direttore dei lavori"@it ,
+                              "has work supervisor"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/isAwardedBy
+:isAwardedBy rdf:type owl:ObjectProperty ;
+             rdfs:comment "Relationship linking a public contract to the authority (contracting or granting authority) that awarded it following a selection procedure."@en ,
+                          "Relazione che collega un contratto pubblico all'autorità (stazione appaltante o ente concedente) che lo ha affidato a seguito di una procedura di selezione."@it ;
+             rdfs:label "is awarded by"@en ,
+                        "è aggiudicato da"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isCalledBy
+:isCalledBy rdf:type owl:ObjectProperty ;
+            rdfs:comment "Relationship linking a procurement  procedure to the buyer (contracting authority) that initiated it."@en ,
+                         "Relazione che collega una procedura di appalto al committente (stazione appaltante) che l'ha indetta."@it ;
+            rdfs:label "is called by"@en ,
+                       "è indetta da"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isContractorOf
+:isContractorOf rdf:type owl:ObjectProperty ;
+                rdfs:comment "Indica che un operatore economico è il contraente di un contratto pubblico."@it ,
+                             "Indicates that an economic operator is the contractor of a public contract."@en ;
+                rdfs:label "is contractor of"@en ,
+                           "è contraente di"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isGeneratedBy
+:isGeneratedBy rdf:type owl:ObjectProperty ;
+               rdfs:comment "Relationship linking a specific public contract to the framework instrument or purchasing system from which it derives."@en ,
+                            "Relazione che collega un contratto pubblico specifico allo strumento quadro o al sistema di acquisizione da cui deriva."@it ;
+               rdfs:label "is generated by"@en ,
+                          "è generato da"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isSubcontractOf
+:isSubcontractOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Subcontract ;
+                 rdfs:range :PublicContract ;
+                 rdfs:comment "Collega un subappalto al contratto pubblico principale di cui fa parte."@it ,
+                              "Relates a sub‑contract to the primary public contract of which it is part."@en ;
+                 rdfs:label "is subcontract of"@en ,
+                            "è subappalto di"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/participatesIn
+:participatesIn rdf:type owl:ObjectProperty ;
+                rdfs:domain :EconomicOperator ;
+                rdfs:range :Procedure ;
+                rdfs:comment "Collega un operatore economico a una procedura di appalto alla quale partecipa, tipicamente presentando un'offerta o una proposta."@it ,
+                             "Relates an economic operator to a procurement procedure in which they participate, typically by submitting a tender or offer."@en ;
+                rdfs:label "partecipa a"@it ,
+                           "participates in"@en ;
+                rdfs:seeAlso epo:Tenderer .
+
+
+###  https://w3id.org/giuliadem/ipc/requiresSOA
+:requiresSOA rdf:type owl:ObjectProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Lot
+                                    :Procedure
+                                    :PublicContract
+                                  )
+                    ] ;
+             rdfs:range :SOACategory ;
+             rdfs:comment "Indica la categoria SOA richiesta per partecipare al lotto."@it ,
+                          "Specifies the SOA category required to participate in the lot."@en ;
+             rdfs:label "requires SOA"@en ,
+                        "richiede SOA"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/resultsInContract
+:resultsInContract rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Procedure ;
+                   rdfs:range :PublicContract ;
+                   rdfs:comment "Collega una procedura di appalto al contratto pubblico che viene stipulato come esito della procedura."@it ,
+                                "Relates a procurement procedure to the public contract that is concluded as a result of that procedure."@en ;
+                   rdfs:label "ha come esito il contratto"@it ,
+                              "results in contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/winsProcedure
+:winsProcedure rdf:type owl:ObjectProperty ;
+               rdfs:comment "Indica che un operatore economico vince una procedura di appalto e ottiene l'aggiudicazione del contratto."@it ,
+                            "Indicates that an economic operator wins a procurement procedure and is awarded the contract."@en ;
+               rdfs:label "vince procedura"@it ,
+                          "wins procedure"@en .
+
+
+###  https://w3id.org/italia/onto/PublicContract/hasCPV
+pcapit:hasCPV rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/italia/onto/PublicContract/hasContract
+pcapit:hasContract rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/italia/onto/PublicContract/hasProcedureType
+pcapit:hasProcedureType rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://data.europa.eu/a4g/ontology#hasLegalName
+epo:hasLegalName rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/giuliadem/ipc/PublicationDate
+:PublicationDate rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf pcapit:publicationDate ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Procedure
+                                             :PublicContract
+                                           )
+                             ] ;
+                 rdfs:range xsd:date ;
+                 rdfs:comment "La data di pubblicazione del bando o avviso di gara."@it ,
+                              "The date on which the tender notice or call for competition was published."@en ;
+                 rdfs:label "data di pubblicazione"@it ,
+                            "publication date"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/auctionBaseValue
+:auctionBaseValue rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf pcapit:auctionBaseAmount ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Lot
+                                              :Procedure
+                                              :PublicContract
+                                            )
+                              ] ;
+                  rdfs:range xsd:decimal ;
+                  rdfs:comment "L'importo massimo stimato dalla stazione appaltante per l'appalto su cui gli operatori offrono un ribasso."@it ,
+                               "The maximum estimated amount for the procurement upon which economic operators submit their bids."@en ;
+                  rdfs:label "auction base value"@en ,
+                             "valore base d'asta"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/ausaCode
+:ausaCode rdf:type owl:DatatypeProperty ;
+          rdfs:domain epo:Buyer ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Il codice identificativo univoco assegnato dall'ANAC (Autorità Nazionale Anticorruzione) alla stazione appaltante o all'ente concedente nell'Anagrafe Unica delle Stazioni Appaltanti."@it ,
+                       "The unique identification code assigned by ANAC (Italian Anticorruption Authority) to the contracting or granting authority within the National Register of Contracting Authorities (AUSA)."@en ;
+          rdfs:label "AUSA code"@en ,
+                     "codice AUSA"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/awardAmount
+:awardAmount rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Lot
+                                         :Procedure
+                                         :PublicContract
+                                       )
+                         ] ;
+             rdfs:range xsd:decimal ;
+             rdfs:comment "L'importo effettivamente aggiudicato al contraente al termine della procedura."@it ,
+                          "The amount actually awarded to the contractor at the end of the procedure."@en ;
+             rdfs:label "award amount"@en ,
+                        "importo di aggiudicazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/awardDate
+:awardDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :Lot
+                                       :Procedure
+                                       :PublicContract
+                                     )
+                       ] ;
+           rdfs:range xsd:date ;
+           rdfs:comment "La data in cui la stazione appaltante decreta il vincitore della gara."@it ,
+                        "The data on which the contracting authority decrees the winner   of the tender."@en ;
+           rdfs:label "award date"@en ,
+                      "data di aggiudicazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/cigValue
+:cigValue rdf:type owl:DatatypeProperty ;
+          rdfs:domain :CIG ;
+          rdfs:range xsd:string ;
+          rdfs:comment "La stringa alfanumerica che costituisce il codice CIG."@it ,
+                       "The alphanumeric string that makes up the CIG code."@en ;
+          rdfs:label "CIG value"@en ,
+                     "valore CIG"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/cpvCode
+:cpvCode rdf:type owl:DatatypeProperty ;
+         rdfs:domain :CPV ;
+         rdfs:range xsd:string ;
+         rdfs:comment "La stringa alfanumerica identificativa del CPV."@it ,
+                      "The alphanumeric string identifying the CPV."@en ;
+         rdfs:label "CPV code"@en ,
+                    "codice CPV"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/cupCode
+:cupCode rdf:type owl:DatatypeProperty ;
+         rdfs:domain :CUP ;
+         rdfs:range xsd:string ;
+         rdfs:comment "La stringa alfanumerica univoca che identifica un progetto di investimento pubblico (Codice Unico di Progetto)."@it ,
+                      "The unique alphanumeric string that identifies a public investment project (Unique Project Code)."@en ;
+         rdfs:label "CUP code"@en ,
+                    "codice CUP"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Procedure ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Descrizione estesa e dettagliata delle prestazioni oggetto dell'appalto."@it ,
+                          "Extended and detailed description of the services or works subject to the procurement."@en ;
+             rdfs:label "description"@en ,
+                        "descrizione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/estimatedValue
+:estimatedValue rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Lot
+                                            :Procedure
+                                            :PublicContract
+                                          )
+                            ] ;
+                rdfs:range xsd:decimal ;
+                rdfs:comment "L'importo a base di gara calcolato ai sensi dell'Art. 14."@it ,
+                             "The tender base amount calculated according to Article 14."@en ;
+                rdfs:label "estimated value"@en ,
+                           "valore stimato"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/familyName
+:familyName rdf:type owl:DatatypeProperty ;
+            rdfs:domain :RUP ;
+            rdfs:range xsd:string ;
+            rdfs:label "cognome"@it ,
+                       "family name"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/givenName
+:givenName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :RUP ;
+           rdfs:range xsd:string ;
+           rdfs:label "given name"@en ,
+                      "nome"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isPNC
+:isPNC rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Procedure ;
+       rdfs:range xsd:boolean ;
+       rdfs:comment "Indica se la procedura è finanziata con i fondi del Piano Nazionale Complementare."@it ,
+                    "Indicates whether the procedure is funded by the Complementary National Plan."@en ;
+       rdfs:label "is PNC"@en ,
+                  "è PNC"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isPNRR
+:isPNRR rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Procedure ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "Indica se la procedura è finanziata con i fondi del Piano Nazionale di Ripresa e Resilienza."@it ,
+                     "Indicates whether the procedure is funded by the National Recovery and Resilience Plan (PNRR)."@en ;
+        rdfs:label "is PNRR"@en ,
+                   "è PNRR"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/isPrevalent
+:isPrevalent rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :CPV
+                                         :SOACategory
+                                       )
+                         ] ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "Indica se la categoria SOA o il CPV è l'oggetto principale dell'appalto."@it ,
+                          "Indicates whether the SOA category or CPV is the main subject of the contract."@en ;
+             rdfs:label "is prevalent"@en ,
+                        "è prevalente"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/istatCode
+:istatCode rdf:type owl:DatatypeProperty ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( <https://w3id.org/italia/onto/CLV/City>
+                                       <https://w3id.org/italia/onto/CLV/Province>
+                                     )
+                       ] ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Il codice univoco assegnato dall'ISTAT per identificare l'unità territoriale."@it ,
+                        "The unique code assigned by ISTAT to identify a territorial unit"@en ;
+           rdfs:isDefinedBy <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities> ;
+           rdfs:label "ISTAT code"@en ,
+                      "codice ISTAT"@it ;
+           rdfs:seeAlso <https://w3id.org/italia/onto/CLV/hasIdentifier> .
+
+
+###  https://w3id.org/giuliadem/ipc/legalName
+:legalName rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf epo:hasLegalName ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( epo:Buyer
+                                       :EconomicOperator
+                                     )
+                       ] ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Il nome ufficiale e registrato di un'organizzazione."@it ,
+                        "The official and registered name of an organization."@en ;
+           rdfs:label "denominazione legale"@it ,
+                      "legal name"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/nutsCode
+:nutsCode rdf:type owl:DatatypeProperty ;
+          rdfs:domain <https://w3id.org/italia/onto/CLV/Province> ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Il codice alfanumerico basato sulla nomenclatura delle unità territoriali per le statistiche (NUTS) dell'Unione Europea."@it ,
+                       "The alphanumeric code based on the Nomenclature of Territorial Units for Statistics (NUTS) of European Union."@en ;
+          rdfs:isDefinedBy <http://publications.europa.eu/resource/authority/nuts> ;
+          rdfs:label "NUTS code"@en ,
+                     "codice NUTS"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/soaCode
+:soaCode rdf:type owl:DatatypeProperty ;
+         rdfs:domain :SOACategory ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Il codice che identifica la categoria SOA. Per l’elenco completo delle categorie SOA, vedi https://www.attestazionesoa.it/approfondimenti/categorie-soa/."@it ,
+                      "The code identifying the SOA category. For the complete list of SOA categories, see https://www.attestazionesoa.it/approfondimenti/categorie-soa/."@en ;
+         rdfs:label "SOA category code"@en ,
+                    "codice categoria SOA"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/taxCode
+:taxCode rdf:type owl:DatatypeProperty ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( epo:Buyer
+                                     :EconomicOperator
+                                   )
+                     ] ;
+         rdfs:range xsd:string ;
+         rdfs:comment "L'identificativo fiscale univoco per enti e operatori economici."@it ,
+                      "The unique tax identification number for entities and economic operators."@en ;
+         rdfs:label "codice fiscale"@it ,
+                    "tax code"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/tenderDeadline
+:tenderDeadline rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Procedure ;
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "La data e l'orario entro cui devono essere presentate le offerte per la procedura."@it ,
+                             "The date and time by which bids must be submitted for the procedure."@en ;
+                rdfs:label "scadenza offerta"@it ,
+                           "tender deadline"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/title
+:title rdf:type owl:DatatypeProperty ;
+       rdfs:domain [ rdf:type owl:Class ;
+                     owl:unionOf ( :Lot
+                                   :Procedure
+                                   :PublicContract
+                                 )
+                   ] .
+
+
+###  https://w3id.org/italia/onto/PublicContract/auctionBaseAmount
+pcapit:auctionBaseAmount rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/italia/onto/PublicContract/publicationDate
+pcapit:publicationDate rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://data.europa.eu/a4g/ontology#AwardCriterion
+epo:AwardCriterion rdf:type owl:Class .
+
+
+###  http://data.europa.eu/a4g/ontology#Buyer
+epo:Buyer rdf:type owl:Class .
+
+
+###  http://data.europa.eu/a4g/ontology#CentralPurchasingBody
+epo:CentralPurchasingBody rdf:type owl:Class ;
+                          owl:equivalentClass :CentralPurchasingBody .
+
+
+###  http://data.europa.eu/a4g/ontology#ConcessionContract
+epo:ConcessionContract rdf:type owl:Class ;
+                       owl:equivalentClass :ConcessionContract .
+
+
+###  http://data.europa.eu/a4g/ontology#DynamicPurchaseSystemTechnique
+epo:DynamicPurchaseSystemTechnique rdf:type owl:Class .
+
+
+###  http://data.europa.eu/a4g/ontology#Lot
+epo:Lot rdf:type owl:Class .
+
+
+###  http://data.europa.eu/a4g/ontology#OfferingParty
+epo:OfferingParty rdf:type owl:Class .
+
+
+###  http://data.europa.eu/a4g/ontology#Procedure
+epo:Procedure rdf:type owl:Class .
+
+
+###  http://data.europa.eu/a4g/ontology#UniqueResponsibleOfTheProcurement
+epo:UniqueResponsibleOfTheProcurement rdf:type owl:Class ;
+                                      owl:equivalentClass :RUP .
+
+
+###  http://data.europa.eu/a4g/ontology#Winner
+epo:Winner rdf:type owl:Class .
+
+
+###  https://w3id.org/giuliadem/ipc/Award
+:Award rdf:type owl:Class ;
+       owl:equivalentClass pcapit:Award ;
+       rdfs:subClassOf :LifecyclePhase ;
+       rdfs:comment "La fase in cui la stazione appaltante valuta le offerte e aggiudica formalmente i contratti pubblici agli operatori economici selezionati."@it ,
+                    "The phase in which the contracting authority evaluates bids and formally awards public contracts to selected economic operators."@en ;
+       rdfs:label "Affidamento"@it ,
+                  "Award"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/AwardAct
+:AwardAct rdf:type owl:Class ;
+          rdfs:comment "Atto formale della Stazione Appaltante con cui si conclude la fase di valutazione e si sceglie il contraente, immediatamente efficace."@it ,
+                       "Formal act of the Contracting Authority concluding the evaluation phase and selecting the contractor, immediately effective."@en ;
+          rdfs:label "Award Act"@en ,
+                     "Provvedimento di aggiudicazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/AwardCriterion
+:AwardCriterion rdf:type owl:Class ;
+                rdfs:subClassOf epo:AwardCriterion ;
+                rdfs:comment "Classe che rappresenta i criteri di aggiudicazione adottati in una procedura o contratto di appalto, ad esempio offerta economicamente più vantaggiosa o prezzo più basso."@it ,
+                             "The class that represents the award criteria applied in a procurement procedure or contract, e.g., most economically advantageous tender or lowest price."@en ;
+                rdfs:label "Award Criterion"@en ,
+                           "Criterio di Aggiudicazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/Awardee
+:Awardee rdf:type owl:Class ;
+         rdfs:subClassOf epo:Winner ,
+                         :EconomicOperator ;
+         rdfs:comment "Economic operator selected as the winner of the procurement procedure."@en ,
+                      "Operatore economico selezionato come vincitore della procedura di gara."@it ;
+         rdfs:label "Aggiudicatario"@it ,
+                    "Awardee"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/CIG
+:CIG rdf:type owl:Class ;
+     rdfs:comment "Codice Identificativo Gara unico assegnato dall'ANAC per la tracciabilità del contratto o del lotto."@it ,
+                  "Unique Procurement Identification Code assigned by ANAC for the traceability of the contract or lot."@en ;
+     rdfs:label "CIG"@en ,
+                "CIG"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/CPV
+:CPV rdf:type owl:Class ;
+     rdfs:subClassOf pcapit:CPV ;
+     rdfs:comment "Reference to the standardized product classification system."@en ,
+                  "Riferimento al sistema di classificazione merceologico standardizzato."@it ;
+     rdfs:isDefinedBy <http://publications.europa.eu/resource/dataset/cpv> ;
+     rdfs:label "CPV (Common Procurement Vocabulary"@en ,
+                "CPV (Common Procurement Vocabulary)"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/CUP
+:CUP rdf:type owl:Class ;
+     rdfs:comment "Il codice che identifica un progetto di investimento pubblico."@it ,
+                  "The code that identifies a public investment project."@en ;
+     rdfs:label "CUP (Codice Unico di Progetto)"@it ,
+                "CUP (Unique Project Code)"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/CallForCompetition
+:CallForCompetition rdf:type owl:Class ;
+                    owl:equivalentClass pcapit:CallForCompetition ;
+                    rdfs:subClassOf pcapit:Document ;
+                    rdfs:comment "An administrative act initiating a public procurement procedure to select a contractor for a public contract, including the key information required by the Public Contracts Code."@en ,
+                                 "Atto amministrativo di indizione di una procedura di scelta del contraente per l’affidamento di un contratto pubblico, contenente le informazioni essenziali richieste dal Codice."@it ;
+                    rdfs:label "Bando di gara"@it ,
+                               "Call for competition"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/CentralPurchasingBody
+:CentralPurchasingBody rdf:type owl:Class ;
+                       rdfs:subClassOf epo:Buyer ;
+                       rdfs:comment "An authority that provides centralized purchasing activities"@en ,
+                                    "Una stazione appaltante che realizza attività di centralizzazione delle committenze per altre stazioni appaltanti."@it ;
+                       rdfs:label "Central Purchasing Body"@en ,
+                                  "Centrale di Committenza"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/ConcessionContract
+:ConcessionContract rdf:type owl:Class ;
+                    rdfs:subClassOf :PublicContract ;
+                    rdfs:comment "Contratto pubblico a titolo oneroso con cui una o più amministrazioni affidano a uno o più operatori economici l’esecuzione di lavori o la fornitura e la gestione di servizi, in cui il corrispettivo consiste nel diritto di gestire ed economicamente sfruttare i lavori o i servizi, eventualmente accompagnato da un prezzo."@it ,
+                                 "Public contract for pecuniary interest by which one or more public authorities entrust an economic operator with the execution of works or the provision and management of services, where the consideration consists in the right to operate and economically exploit the works or services, possibly together with a payment."@en ;
+                    rdfs:label "Concession Contract"@en ,
+                               "Concessione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/ContractingAuthority
+:ContractingAuthority rdf:type owl:Class ;
+                      rdfs:subClassOf epo:Buyer ;
+                      rdfs:comment "A public or private entity that awards contracts for works, supplies or services."@en ,
+                                   "Qualsiasi soggetto pubblico o privato che affida contratti di lavori, servizi o forniture."@it ;
+                      rdfs:label "Contracting Authority"@en ,
+                                 "Stazione Appaltante"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/Convention
+:Convention rdf:type owl:Class ;
+            rdfs:subClassOf :FrameworkAgreement ;
+            rdfs:comment "Contratto quadro stipulato da una centrale di committenza al quale le stazioni appaltanti possono aderire per l'acquisto di beni e servizi a condizioni e prezzi prestabiliti."@it ,
+                         "Framework contract concluded by a central purchasing body which contracting authorities may join in order to procure goods or services under pre-established contractual conditions and prices."@en ;
+            rdfs:label "Convention"@en ,
+                       "Convenzione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/Design
+:Design rdf:type owl:Class ;
+        rdfs:subClassOf :LifecyclePhase ;
+        rdfs:comment "La fase dedicata alla pianificazione e alla predisposizione delle specifiche tecnico-economiche del progetto di procurement, includendo eventualmente studi di fattibilità e progetti esecutivi"@it ,
+                     "The phase dedicated to planning and preparing technical and economic specifications of the procurement project, possibly including feasibility studies and detailed executive plans."@en ;
+        rdfs:label "Design"@en ,
+                   "Progettazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/DynamicPurchasingSystem
+:DynamicPurchasingSystem rdf:type owl:Class ;
+                         rdfs:subClassOf epo:DynamicPurchaseSystemTechnique ,
+                                         :Procedure ;
+                         rdfs:comment "Electronic procurement tool for the purchase of standardized goods or services."@en ,
+                                      "Strumento di negoziazione elettronica per acquisti standardizzati."@it ;
+                         rdfs:label "Dynamic Purchasing System"@en ,
+                                    "Sistema dinamico di Acquisizione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/EconomicOperator
+:EconomicOperator rdf:type owl:Class ;
+                  rdfs:subClassOf epo:OfferingParty ;
+                  rdfs:comment "Any natural or legal person [...] that offers in the market the execution of works, the supply of goods or the provision of services."@en ,
+                               "Qualsiasi persona fisica o giuridica [...] che offre nel mercato la realizzazione di opere, di forniture o la prestazione di servizi."@it ;
+                  rdfs:label "Economic Operator"@en ,
+                             "Operatore Economico"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/Execution
+:Execution rdf:type owl:Class ;
+           rdfs:subClassOf :LifecyclePhase ;
+           rdfs:comment "La fase in cui i contratti aggiudicati vengono eseguiti, comprensiva della fornitura di lavori, servizi o forniture, del monitoraggio dell’avanzamento e del rispetto degli obblighi contrattuali."@it ,
+                        "The phase in which awarded contracts are implemented, including the delivery of works, services or supplies, monitoring of progress, and compliance with contractual obligations."@en ;
+           rdfs:label "Esecuzione"@it ,
+                      "Execution"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/ExecutiveProject
+:ExecutiveProject rdf:type owl:Class ;
+                  rdfs:subClassOf :Design ;
+                  rdfs:comment "Rappresenta il progetto dettagliato che definisce tutte le specifiche tecniche, le quantità e i piani di esecuzione necessari per avviare l'affidamento dei contratti all'interno della procedura di procurement."@it ,
+                               "Represents the detailed project that defines all technical specifications, quantities, and execution plans required to initiate the award of contracts within the procurement procedure."@en ;
+                  rdfs:label "Executive Project"@en ,
+                             "Progetto Esecutivo"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/FeasibilityTechnicalEconomicProject
+:FeasibilityTechnicalEconomicProject rdf:type owl:Class ;
+                                     rdfs:subClassOf :Design ;
+                                     rdfs:comment "Rappresenta il progetto preparatorio che valuta la fattibilità tecnica e la sostenibilità economica del procurement, fornendo le basi per la progettazione esecutiva e le procedure successive."@it ,
+                                                  "Represents the preparatory project that assesses technical feasibility and economic viability of the procurement, providing the basis for further executive design and subsequent procedures."@en ;
+                                     rdfs:label "Feasibility Technical-Economic Project"@en ,
+                                                "Progetto di Fattibilità Tecnico-Economica"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/FrameworkAgreement
+:FrameworkAgreement rdf:type owl:Class ;
+                    rdfs:subClassOf :Procedure ,
+                                    pcapit:FrameworkAgreement ;
+                    rdfs:comment "A procurement planning instrument establishing general (and possibly specific) terms for contracts to be awarded during a given period. It may provide for direct award or the reopening of competition."@en ,
+                                 "Strumento di pianificazione degli acquisti che stabilisce le condizioni generali (ed eventualmente specifiche) relative ad appalti da aggiudicare durante un dato periodo. Può prevedere l'aggiudicazione diretta o la riapertura del confronto competitivo."@it ;
+                    rdfs:label "Accordo Quadro"@it ,
+                               "Framework Agreement"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/GrantingAuthority
+:GrantingAuthority rdf:type owl:Class ;
+                   rdfs:subClassOf epo:Buyer ;
+                   rdfs:comment "Any contracting authority or contracting or contracting entity, or any other public or private entity, that awards works or services concession contracts and is in any case required, when selecting the contractor, to comply with the code."@en ,
+                                "Qualsiasi amminstrazione aggiudicatrice o ente aggiudicatore, ovvero altro soggetto pubblico o privato, che affida contratti di concessione di lavori o di servizi che è comunque tenuto, nella scelta del contraente, al rispetto del codice."@it ;
+                   rdfs:label "Ente Concedente"@it ,
+                              "Granting Authority"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/LegalPrinciple
+:LegalPrinciple rdf:type owl:Class ;
+                rdfs:comment "A class representing the fundamental legal principles that guide the interpretation, execution, and awarding of public contracts according to the Italian Public Contracts Code."@en ,
+                             "Classe che rappresenta i principi giuridici fondamentali che guidano l'interpretazione, l'esecuzione e l'aggiudicazione dei contratti pubblici secondo il Codice dei Contratti Pubblici."@it ;
+                rdfs:label "Legal Principle"@en ,
+                           "Principio Legale"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/LifecyclePhase
+:LifecyclePhase rdf:type owl:Class ;
+                rdfs:comment "Rappresenta una fase del ciclo di vita di un progetto di procurement pubblico, dalla programmazione all'esecuzione."@it ,
+                             "Represents a phase in the life cycle of a public procurement project, from planning to execution."@en ;
+                rdfs:label "Fase del ciclo di vita"@it ,
+                           "Lifecycle Phase"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/Lot
+:Lot rdf:type owl:Class ;
+     rdfs:subClassOf epo:Lot ,
+                     pcapit:Lot ;
+     rdfs:comment "A subdivision of a procurement project that allows the contracting authority to award different contracts to different economic operators under separate terms. Each lot is associated with a unique procedure and has its own CIG."@en ,
+                  "Una suddivisione di un progetto di procurement che consente alla stazione appaltante di aggiudicare diversi contratti a diversi operatori economici tramite termini separati. Ogni lotto è associato a una procedura specifica e ha un proprio CIG."@it ;
+     rdfs:label "Lot"@en ,
+                "Lotto"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/ParticipationRole
+:ParticipationRole rdf:type owl:Class ;
+                   rdfs:comment "Defines the way an economic operator participates in a tender."@en ,
+                                "Definisce la modalità con cui un operatore economico partecipa a una gara."@it ;
+                   rdfs:label "Participation role"@en ,
+                              "Ruolo di partecipazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/Procedure
+:Procedure rdf:type owl:Class ;
+           rdfs:subClassOf epo:Procedure ,
+                           pcapit:Procedure ;
+           rdfs:comment "A set of activities performed by a contracting authority to award a public contract. Steps and modalities vary depending on the type of procedure."@en ,
+                        "Insieme di attività svolte da una stazione appaltante per l'affidamento di un contratto pubblico. Gli step e le modalità variano a seconda del tipo di procedura."@it ;
+           rdfs:label "Procedura"@it ,
+                      "Procedure"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/ProcurementSector
+:ProcurementSector rdf:type owl:Class ;
+                   rdfs:comment "Specifica se l'appalto rientra nei settori ordinari o nei settori speciali (es. energia, trasporti - Libro III del codice)."@it ,
+                                "Specifies whether the procurement falls under ordinary sectors or special sectors (e.g., energy, transport - Book III of the Italian Code of Public Contracts)."@en ;
+                   rdfs:label "Procurement Sector"@en ,
+                              "Settore di procurement"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/Programming
+:Programming rdf:type owl:Class ;
+             rdfs:subClassOf :LifecyclePhase ;
+             rdfs:comment "La fase in cui la stazione appaltante definisce obiettivi, risorse e priorità dei progetti di procurement pubblico, incluse le procedure pianificate e le stanziamenti di bilancio."@it ,
+                          "The phase in which the contracting authority defines objectives, resources, and priorities for public procurement projects, including planned procedures and budget allocations."@en ;
+             rdfs:label "Programmazione"@it ,
+                        "Programming"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/PublicContract
+:PublicContract rdf:type owl:Class ;
+                rdfs:comment "A contract, including those other than public procurement contracts and concessions, entered into by a contracting authority or a contracting entity."@en ,
+                             "Contratto concluso da una stazione appaltante o da un ente concedente, anche diverso da appalto o concessione."@it ;
+                rdfs:label "Contratto Pubblico"@it ,
+                           "Public Contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/PublicProcurementContract
+:PublicProcurementContract rdf:type owl:Class ;
+                           rdfs:subClassOf :PublicContract ;
+                           rdfs:comment "A public contract for pecuniary interest, concluded between one or more economic operators and one or more contracting authorities, having as its object the execution of works, the supply of goods or the provision of services."@en ,
+                                        "Contratto pubblico a titolo oneroso stipulato tra uno o più operatori economici e una o più stazioni appaltanti, avente per oggetto l'esecuzione di lavori, la fornitura di beni o la prestazione di servizi."@it ;
+                           rdfs:label "Appalto"@it ,
+                                      "Public procurement contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/RUP
+:RUP rdf:type owl:Class ;
+     rdfs:comment "Il responsabile unico del procedimento (RUP) nominato per le procedure di gara, così come definito nel Codice dei contratti pubblici, Art. 15)"@it ,
+                  "The sole project manager (RUP) appointed for public procurement procedures, as defined in the Italian Public Contracts Code, Article 15)"@en ;
+     rdfs:label "Responsabile Unico del Progetto (RUP)"@it ,
+                "Sole Project Manager (RUP)"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/SOACategory
+:SOACategory rdf:type owl:Class ;
+             rdfs:comment "La categoria SOA (Società Organismo di Attestazione) identifica il livello di qualificazione necessario per eseguire lavori pubblici. Le categorie sono suddivise in Opere Generali (OG) e Opere Specializzate (OS), vedi: https://www.attestazionesoa.it/approfondimenti/categorie-soa/ ."@it ,
+                          "The SOA (Società Organismo di Attestazione) category defines the qualification level required to perform public works in Italy. Categories are divided into General Works (OG) and Specialized Works (OS), see: https://www.attestazionesoa.it/approfondimenti/categorie-soa/ (in Italian)."@en ;
+             rdfs:label "Categoria SOA - Società Organismo di Attestazione"@it ,
+                        "SOA Category"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/ServicesContract
+:ServicesContract rdf:type owl:Class ;
+                  rdfs:subClassOf :PublicProcurementContract ;
+                  rdfs:comment "A public procurement contract having as its object the provision of services."@en ,
+                               "Appalto pubblico avente per oggetto la prestazione di servizi."@it ;
+                  rdfs:label "Appalto di servizi"@it ,
+                             "Services contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/SpecialSpecifications
+:SpecialSpecifications rdf:type owl:Class ;
+                       rdfs:subClassOf pcapit:Document ;
+                       rdfs:comment "Document that defines the content of the future contractual relationship between the awardee and the contracting authority, specifying technical requirements and other relevant elements in accordance the Italian Public Contracts Code."@en ,
+                                    "Documento che definisce i contenuti del futuro rapporto contrattuale tra l’aggiudicatario e la stazione appaltante, specificando prescrizioni tecniche e altri elementi rilevanti secondo il Codice."@it ;
+                       rdfs:label "Capitolato speciale"@it ,
+                                  "Special specifications"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/Subcontract
+:Subcontract rdf:type owl:Class ;
+             rdfs:subClassOf :PublicContract ;
+             rdfs:comment "A contract or part of a public procurement contract that is subcontracted by the main contractor to another economic operator."@en ,
+                          "Un contratto o parte di un contratto pubblico di appalto che viene affidato in subappalto dall'appaltatore principale a un altro operatore economico."@it ;
+             rdfs:label "Subappalto"@it ,
+                        "Subcontract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/SuppliesContract
+:SuppliesContract rdf:type owl:Class ;
+                  rdfs:subClassOf :PublicProcurementContract ;
+                  rdfs:comment "A public procurement contract having as its object the supply of goods."@en ,
+                               "Appalto pubblico avente per oggetto la fornitura di beni."@it ;
+                  rdfs:label "Appalto di forniture"@it ,
+                             "Supplies contract"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/TenderProcedureRules
+:TenderProcedureRules rdf:type owl:Class ;
+                      rdfs:subClassOf pcapit:Document ;
+                      rdfs:comment "Document that sets the rules for conducting the procedure to select tenders."@en ,
+                                   "Documento che fissa le regole per lo svolgimento del procedimento di selezione delle offerte."@it ;
+                      rdfs:label "Disciplinare di gara"@it ,
+                                 "Tender procedure rules"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/Threshold
+:Threshold rdf:type owl:Class ;
+           rdfs:comment "Rappresenta il limite di valore stimato che determina l'applicazione delle direttive europee (Art. 14)."@it ,
+                        "Represent the estimated value limit that determines the application of EU directives (Art. 14)."@en ;
+           rdfs:label "Procurement threshold"@en ,
+                      "Soglia di rilevanza"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/WorkSupervisor
+:WorkSupervisor rdf:type owl:Class ;
+                rdfs:comment "Figura professionale responsabile della direzione dell'esecuzione dei contratti di lavori pubblici, con compiti di vigilanza, controllo e accertamento della conformità alle norme, al progetto e al contratto. Obbligatoria per gli appalti di lavori superiori a determinate soglie secondo il Codice dei contratti pubblici."@it ,
+                             "Professional figure responsible for supervising the execution phase of public works contracts, ensuring compliance with project specifications, regulations, and contract terms. Mandatory for works contracts exceeding specific thresholds as per Italian Public Contracts Code."@en ;
+                rdfs:label "Direttore dei Lavori"@it ,
+                           "Work Supervisor"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/WorksContract
+:WorksContract rdf:type owl:Class ;
+               rdfs:subClassOf :PublicProcurementContract ;
+               rdfs:comment "A public procurement contract having as its object the execution of works."@en ,
+                            "Appalto pubblico avente per oggetto l'esecuzione di lavori."@it ;
+               rdfs:label "Appalto di lavori"@it ,
+                          "Works contract"@en .
+
+
+###  https://w3id.org/italia/onto/CLV/City
+<https://w3id.org/italia/onto/CLV/City> rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/CLV/Province
+<https://w3id.org/italia/onto/CLV/Province> rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/COV/LegalStatus
+<https://w3id.org/italia/onto/COV/LegalStatus> rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/Award
+pcapit:Award rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/CPV
+pcapit:CPV rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/CallForCompetition
+pcapit:CallForCompetition rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/Document
+pcapit:Document rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/FrameworkAgreement
+pcapit:FrameworkAgreement rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/Lot
+pcapit:Lot rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/Procedure
+pcapit:Procedure rdf:type owl:Class .
+
+
+###  https://w3id.org/italia/onto/PublicContract/ProcedureType
+pcapit:ProcedureType rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/giuliadem/ipc/AboveThreshold
+:AboveThreshold rdf:type owl:NamedIndividual ,
+                         :Threshold ;
+                rdfs:comment "Appalti di valore pari o superiore alle soglie di rilevanza europea."@it ,
+                             "Procurements with a value equal to or above the EU relevance thresholds."@en ;
+                rdfs:label "Above EU threshold"@en ,
+                           "Sopra soglia comunitaria"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/BelowThreshold
+:BelowThreshold rdf:type owl:NamedIndividual ,
+                         :Threshold ;
+                rdfs:comment "Appalti di valore inferiore alle soglie di rilevanza europea, soggetti a procedure semplificate."@it ,
+                             "Procurements with a value below the EU relevance thresholds, subject to simplified procedures."@en ;
+                rdfs:label "Below threshold"@en ,
+                           "Sotto soglia"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/CompetitiveComparisonInConvention
+:CompetitiveComparisonInConvention rdf:type owl:NamedIndividual ,
+                                            pcapit:ProcedureType ;
+                                   rdfs:comment "Re-opening of competitive comparison among suppliers awarded under a convention."@en ,
+                                                "Riapertura del confronto competitivo tra i fornitori aggiudicatari di una convenzione."@it ;
+                                   rdfs:label "Competitive comparison under a convention"@en ,
+                                              "Confronto competitivo in adesione a convenzione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/CompetitiveComparisonInFramework
+:CompetitiveComparisonInFramework rdf:type owl:NamedIndividual ,
+                                           pcapit:ProcedureType ;
+                                  rdfs:comment "Awarding method involving the re-opening of competition among the economic operators party to the framework agreement."@en ,
+                                               "Modalità di scelta che prevede la riapertura del confronto tra gli operatori dell'accordo quadro."@it ;
+                                  rdfs:label "Competitive Comparison under a framework agreement"@en ,
+                                             "Confronto competitivo in adesione ad accordo quadro"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/CompetitiveDialogue
+:CompetitiveDialogue rdf:type owl:NamedIndividual ,
+                              pcapit:ProcedureType ;
+                     rdfs:comment "Art. 74: La stazione appaltante dialoga con i candidati ammessi per individuare le soluzioni migliori. Utilizzato per progetti complessi (es. grandi infrastrutture) dove non sono chiari i mezzi tecnici o finanziari."@it ,
+                                  "Art. 74: The authority dialogues with candidates to identify the best solution to satisfy its needs. Used for particularly complex projects (e.g. major infrastructures) where technical means are not pre-defined."@en ;
+                     rdfs:label "Competitive Dialogue"@en ,
+                                "Dialogo Competitivo"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/CompetitiveNegotiationProcedure
+:CompetitiveNegotiationProcedure rdf:type owl:NamedIndividual ,
+                                          pcapit:ProcedureType ;
+                                 rdfs:comment "Art. 73: Allows negotiation to improve initial tenders. Limits: Used when needs cannot be met without adaptation of readily available solutions or due to specific complexity."@en ,
+                                              "Art. 73: Prevede la negoziazione delle offerte iniziali. Limite: Utilizzabile quando le esigenze non possono essere soddisfatte con soluzioni standard o richiedono una progettazione innovativa."@it ;
+                                 rdfs:label "Competitive Procedure with Negotiation"@en ,
+                                            "Procedura Competitiva con Negoziazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/ConventionType
+:ConventionType rdf:type owl:NamedIndividual ,
+                         pcapit:ProcedureType ;
+                rdfs:comment "Procedural type identifying procurements carried out through adherence to a framework convention."@en ,
+                             "Tipologia procedurale che identifica gli acquisti effettuati tramite adesione a una convenzione quadro."@it ;
+                rdfs:label "Convention (type)"@en ,
+                           "Convenzione (tipo)"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/DirectAwardInConvention
+:DirectAwardInConvention rdf:type owl:NamedIndividual ,
+                                  pcapit:ProcedureType ;
+                         rdfs:comment "Acquisto effettuato direttamente tramite ordinativo di fornitura su una convenzione esistente."@it ,
+                                      "Procurement carried out through direct ordering under an existing convention, without re-opening competition."@en ;
+                         rdfs:label "Affidamento diretto in adesione a convenzione"@it ,
+                                    "Direct award under a convention"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/DirectAwardInFramework
+:DirectAwardInFramework rdf:type owl:NamedIndividual ,
+                                 pcapit:ProcedureType ;
+                        rdfs:comment "Awarding method based on the direct assignment to one of the economic operators party to the framework agreement, without re-opening competition."@en ,
+                                     "Modalità di scelta tramite assegnazione diretta a un operatore dell'accordo quadro senza nuovo confronto."@it ;
+                        rdfs:label "Affidamento diretto in adesione ad accordo quadro"@it ,
+                                   "Direct award    under a framework agreement"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/DirectAwardProcedure
+:DirectAwardProcedure rdf:type owl:NamedIndividual ,
+                               pcapit:ProcedureType ;
+                      rdfs:comment "A procedure type identifying a direct award, characterized by the contracting authority selecting an economic operator without a formal tender process."@en ,
+                                   "Tipo di procedura che identifica l'affidamento diretto, caratterizzato dalla scelta dell'operatore economico da parte della stazione appaltante senza una procedura di gara formale."@it ;
+                      rdfs:label "Affidamento Diretto"@it ,
+                                 "Direct Award"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/DynamicPurchasingSystemType
+:DynamicPurchasingSystemType rdf:type owl:NamedIndividual ,
+                                      pcapit:ProcedureType ;
+                             rdfs:comment "Fully electronic procurement procedure for commonly used purchases, open throughout its duration to any economic operator that meets the selection criteria."@en ,
+                                          "Procedura interamente elettronica per acquisti di uso corrente, aperta per tutta la sua durata a qualsiasi operatore economico che soddisfi i criteri di selezione."@it ;
+                             rdfs:label "Dynamic Purchasing System"@en ,
+                                        "Sistema dinamico di acquisizione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/FrameworkAgreementType
+:FrameworkAgreementType rdf:type owl:NamedIndividual ,
+                                 pcapit:ProcedureType ;
+                        rdfs:comment "Individual identifying the framework agreement as a procurement technique. It represents a preliminary convention establishing terms for contracts to be awarded over a given period."@en ,
+                                     "Individuo che identifica la tipologia procedurale dell'accordo quadro. Rappresenta una tecnica di acquisto basata su una convenzione preliminare che stabilisce le clausole relative ad appalti da aggiudicare in un determinato arco temporale."@it ;
+                        rdfs:label "Accordo Quadro (tipo)"@it ,
+                                   "Framework Agreement (type)"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/InnovationPartnership
+:InnovationPartnership rdf:type owl:NamedIndividual ,
+                                pcapit:ProcedureType ;
+                       rdfs:comment "Art. 75: Aimed at the development of an innovative product, service or works not available on the market and its subsequent purchase. Covers both R&D and commercial delivery."@en ,
+                                    "Art. 75: Utilizzato per lo sviluppo e il successivo acquisto di prodotti, servizi o lavori innovativi non ancora disponibili sul mercato. Unisce ricerca e fornitura in un unico rapporto."@it ;
+                       rdfs:label "Innovation Partnership"@en ,
+                                  "Partenariato per l'Innovazione"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/LeadPartner
+:LeadPartner rdf:type owl:NamedIndividual ,
+                      :ParticipationRole ;
+             rdfs:comment "L'operatore economico al quale è conferito mandato collettivo speciale con rappresentanza dagli altri membri del raggruppamento (mandanti). È l'interlocutore principale della stazione appaltante."@it ,
+                          "The economic operator that has been granted a special collective mandate with representation by the other members of the grouping. It acts as the primary interlocutor with the contracting authority."@en ;
+             rdfs:label "Lead Partner in JV (Joint Venture)"@en ,
+                        "Mandatario in RTI (Raggruppamento Temporaneo di Imprese)"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/LowestPrice
+:LowestPrice rdf:type owl:NamedIndividual ,
+                      :AwardCriterion ;
+             rdfs:comment "Award criterion in which the contract is awarded to the tenderer submitting the lowest price."@en ,
+                          "Criterio di aggiudicazione in cui il contratto è aggiudicato all'offerente che presenta il prezzo più basso."@it ;
+             rdfs:label "Lowest Price"@en ,
+                        "Prezzo più basso"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/MarketAccessPrinciple
+:MarketAccessPrinciple rdf:type owl:NamedIndividual ,
+                                :LegalPrinciple ;
+                       rdfs:comment "According to Article 3 of the Public Contracts Code, contracting authorities and granting entities must promote access to the market for economic operators, respecting the principles of competition, impartiality, non-discrimination, publicity, transparency, and proportionality."@en ,
+                                    "Ai sensi dell'Articolo 3 del Codice dei Contratti Pubblici, le stazioni appaltanti e gli enti concedenti favoriscono l'accesso al mercato degli operatori economici, nel rispetto dei principi di concorrenza, imparzialità, non discriminazione, pubblicità, trasparenza e proporzionalità."@it ;
+                       rdfs:label "Market Access Principle"@en ,
+                                  "Principio dell'Accesso al Mercato"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/MemberPartner
+:MemberPartner rdf:type owl:NamedIndividual ,
+                        :ParticipationRole ;
+               rdfs:comment "L'operatore economico che fa parte di un raggruppamento temporaneo (RTI) e che conferisce mandato di rappresentanza al mandatario."@it ,
+                            "The economic operator that is part of a joint venture or temporary grouping and grants a mandate of representation to the lead partner."@en ;
+               rdfs:label "Mandante in RTI (Raggruppamento Temporaneo di Imprese)"@it ,
+                          "Member Partner in JV (Joint Venture)"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/MostEconomicallyAdvantageousTender
+:MostEconomicallyAdvantageousTender rdf:type owl:NamedIndividual ,
+                                             :AwardCriterion ;
+                                    rdfs:comment "Award criterion in which the contract is awarded based on the best combination of quality and price."@en ,
+                                                 "Criterio di aggiudicazione in cui il contratto è aggiudicato in base alla migliore combinazione di qualità e prezzo."@it ;
+                                    rdfs:label "Most Economically Advantageous Tender"@en ,
+                                               "Offerta economicamente più vantaggiosa"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/NegotiatedProcedureWithoutPublication
+:NegotiatedProcedureWithoutPublication rdf:type owl:NamedIndividual ,
+                                                pcapit:ProcedureType ;
+                                       rdfs:comment "Art. 76: Allowed only in specific cases:extreme urgency, faied open/restricted tenders, unique provider for technical/artistic reasons or protection of exclusive rights."@en ,
+                                                    "Art. 76: Ammessa solo in casi tassativi: estrema urgenza, gare deserte, fornitore unico per motivi tecnici/artistici o tutela di diritti esclusivi."@it ;
+                                       rdfs:label "Negotiated Procedure without Prior Publication"@en ,
+                                                  "Procedura Negoziata senza Pubblicazione di un Bando"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/OpenProcedure
+:OpenProcedure rdf:type owl:NamedIndividual ,
+                        pcapit:ProcedureType ;
+               rdfs:comment "Art. 71: Any interested economic operator may submit a tender in response to a call for competition."@en ,
+                            "Art. 71: Procedura in cui qualsiasi operatore economico interessato può presentare un'offerta."@it ;
+               rdfs:label "Open Procedure"@en ,
+                          "Procedura Aperta"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/OrdinarySector
+:OrdinarySector rdf:type owl:NamedIndividual ,
+                         :ProcurementSector ;
+                rdfs:comment "Procurement sector subject to the ordinary rules of the Italian Code of Public Contracts"@en ,
+                             "Settore di appalto soggetto alla disciplina ordinaria del Codice."@it ;
+                rdfs:label "Ordinary sector"@en ,
+                           "Settore ordinario"@it .
+
+
+###  https://w3id.org/giuliadem/ipc/RestrictedProcedure
+:RestrictedProcedure rdf:type owl:NamedIndividual ,
+                              pcapit:ProcedureType ;
+                     rdfs:comment "Art. 72: Any economic operator may ask to participate, but only those invited by the contracting authority may submit a tender. Used to filter operators based on technical/financial capacity."@en ,
+                                  "Art. 72: Ogni operatore può chiedere di partecipare, ma solo quelli invitati dalla stazione appaltante possono presentare offerta. Utile per mercati con molti operatori o per appalti che richiedono requisiti specifici."@it ;
+                     rdfs:label "Procedura Ristretta"@it ,
+                                "Restricted Procedure"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/ResultPrinciple
+:ResultPrinciple rdf:type owl:NamedIndividual ,
+                          :LegalPrinciple ;
+                 rdfs:comment "Il criterio prioritario per l'esercizio del potere discrezionale e per l'interpretazione delle disposizioni del Codice."@it ,
+                              "The principle of result constitutes the priority criterion for the exercise of discretionary power and for the interpretation of the provisions of the Code."@en ;
+                 rdfs:label "Principio del Risultato"@it ,
+                            "Principle of Result"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/SingleEconomicOperator
+:SingleEconomicOperator rdf:type owl:NamedIndividual ,
+                                 :ParticipationRole ;
+                        rdfs:comment "L'operatore economico che partecipa alla procedura di gara singolarmente, senza essere parte di un raggruppamento o consorzio."@it ,
+                                     "The economic operator that participates in the procurement procedure individually, without being part of a grouping or consortium."@en ;
+                        rdfs:label "Operatore Economico Monosoggettivo"@it ,
+                                   "Single Economic Operator"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/SpecialSector
+:SpecialSector rdf:type owl:NamedIndividual ,
+                        :ProcurementSector ;
+               rdfs:comment "Settore di appalto speciale (es. energia, trasporti, servizi postali) disciplinato dal Libro III del Codice"@it ,
+                            "Special procurement sector (e.g., energy, transport, postal services) governed by Book III of the Italian Code of Public Contracts"@en ;
+               rdfs:label "Settore speciale"@it ,
+                          "Special sector"@en .
+
+
+###  https://w3id.org/giuliadem/ipc/TrustPrinciple
+:TrustPrinciple rdf:type owl:NamedIndividual ,
+                         :LegalPrinciple ;
+                rdfs:comment "Il principio della fiducia favorisce l'autonomia decisionale dei funzionari pubblici e valorizza l'iniziativa e la responsabilità per le scelte effettuate nell'ambito del ciclo di vita dei contratti."@it ,
+                             "The principle of trust promotes the decision-making autonomy of public officials and enhances initiative and responsibility for the choices made throughout the contract lifecycle."@en ;
+                rdfs:label "Principio della Fiducia"@it ,
+                           "Principle of Trust"@en .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:title rdfs:comment "Brief description of the object of the procurement."@en ,
+                    "Descrizione sintetica dell'oggetto dell'appalto."@it ;
+       rdfs:label "oggetto del bando"@it ,
+                  "procurement title"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

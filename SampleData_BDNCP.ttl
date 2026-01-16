@@ -1,0 +1,559 @@
+@prefix ipc:   <https://w3id.org/giuliadem/ipc/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix clv:   <https://w3id.org/italia/onto/CLV/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+### CONTRACTING AUTHORITIES ###
+
+ipc:SA_91224620376 rdf:type ipc:ContractingAuthority ; ipc:legalName "MINISTERO SVILUPPO ECONOMICO - DIP.COMUNICAZIONI-ISPETTORATO TERR.LE EMILIA ROMAGNA" ; ipc:taxCode "91224620376" .
+ipc:SA_01531480216 rdf:type ipc:ContractingAuthority ; ipc:legalName "ECO CENTER S.P.A." ; ipc:taxCode "01531480216" .
+ipc:SA_80062590379 rdf:type ipc:ContractingAuthority ; ipc:legalName "REGIONE EMILIA ROMAGNA" ; ipc:taxCode "80062590379" .
+ipc:SA_05779661007 rdf:type ipc:ContractingAuthority ; ipc:legalName "TERNA-RETE ELETTRICA NAZIONALE SOCIETA' PER AZIONI" ; ipc:taxCode "05779661007" .
+ipc:SA_00217280668 rdf:type ipc:ContractingAuthority ; ipc:legalName "COMUNE DI CARSOLI" ; ipc:taxCode "00217280668" .
+ipc:SA_01429910183 rdf:type ipc:ContractingAuthority ; ipc:legalName "A.S.M. VOGHERA S.P.A." ; ipc:taxCode "01429910183" .
+ipc:SA_80208450587 rdf:type ipc:ContractingAuthority ; ipc:legalName "ANAS - SOCIETA' PER AZIONI" ; ipc:taxCode "80208450587" .
+ipc:SA_00355870221 rdf:type ipc:ContractingAuthority ; ipc:legalName "COMUNE DI TRENTO" ; ipc:taxCode "00355870221" .
+ipc:SA_00913490249 rdf:type ipc:ContractingAuthority ; ipc:legalName "U.L.S.S. N. 4 ALTO VICENTINO" ; ipc:taxCode "00913490249" .
+ipc:SA_82008540211 rdf:type ipc:ContractingAuthority ; ipc:legalName "GEMEINDE SCHLUDERNS" ; ipc:taxCode "82008540211" .
+ipc:SA_91007440497 rdf:type ipc:ContractingAuthority ; ipc:legalName "PARCO NAZIONALE ARCIPELAGO TOSCANO" ; ipc:taxCode "91007440497" .
+ipc:SA_01707050504 rdf:type ipc:ContractingAuthority ; ipc:legalName "PISAMO S.R.L." ; ipc:taxCode "01707050504" .
+ipc:SA_80016350821 rdf:type ipc:ContractingAuthority ; ipc:legalName "COMUNE DI PALERMO" ; ipc:taxCode "80016350821" .
+ipc:SA_94060760215 rdf:type ipc:ContractingAuthority ; ipc:legalName "LIBERA UNIVERSITA' DI BOLZANO" ; ipc:taxCode "94060760215" .
+ipc:SA_04355020266 rdf:type ipc:ContractingAuthority ; ipc:legalName "CONSORZIO DI BONIFICA PIAVE" ; ipc:taxCode "04355020266" .
+ipc:SA_80014700738 rdf:type ipc:ContractingAuthority ; ipc:legalName "DIREZIONE DI COMMISSARIATO MARINA MILITARE - TARANTO" ; ipc:taxCode "80014700738" ; ipc:ausaCode "0000239294" .
+ipc:SA_01825570854 rdf:type ipc:ContractingAuthority ; ipc:legalName "AZIENDA SANITARIA PROVINCIALE DI CALTANISSETTA" ; ipc:taxCode "01825570854" ; ipc:ausaCode "0000248418" .
+ipc:SA_09735650013 rdf:type ipc:ContractingAuthority ; ipc:legalName "AZIENDA SANITARIA LOCALE TO3" ; ipc:taxCode "09735650013" ; ipc:ausaCode "0000240647" .
+ipc:SA_80005670619 rdf:type ipc:ContractingAuthority ; ipc:legalName "MUNICIPIO GRAZZANISE" ; ipc:taxCode "80005670619" ; ipc:ausaCode "0000237928" .
+ipc:SA_80007010376 rdf:type ipc:ContractingAuthority ; ipc:legalName "ALMA MATER STUDIORUM UNIVERSITA' DI BOLOGNA" ; ipc:taxCode "80007010376" ; ipc:ausaCode "0000239516" .
+ipc:SA_03988160960 rdf:type ipc:ContractingAuthority ; ipc:legalName "AMIACQUE SRL" ; ipc:taxCode "03988160960" ; ipc:ausaCode "0000215706" .
+ipc:SA_01764970792 rdf:type ipc:ContractingAuthority ; ipc:legalName "SOCIETA' AEROPORTUALE CALABRESE S.P.A." ; ipc:taxCode "01764970792" ; ipc:ausaCode "0000188884" .
+ipc:SA_80000840753 rdf:type ipc:ContractingAuthority ; ipc:legalName "PROVINCIA DI LECCE" ; ipc:taxCode "80000840753" ; ipc:ausaCode "0000234780" .
+
+### RUP ###
+
+ipc:RUP_B44AC3AB16 rdf:type ipc:RUP ; ipc:givenName "MARIA LEONARDA PIA" ; ipc:familyName "FERRANTINO" .
+ipc:RUP_B0F8F3E4F5 rdf:type ipc:RUP ; ipc:givenName "GIAMMARCO" ; ipc:familyName "ALMICI" .
+ipc:RUP_B083B70E6B rdf:type ipc:RUP ; ipc:givenName "STEFANO" ; ipc:familyName "BONCOMPAGNI" .
+ipc:RUP_B6E7CD4290 rdf:type ipc:RUP ; ipc:givenName "ALESSANDRO" ; ipc:familyName "ORDINE" .
+ipc:RUP_60792324F2 rdf:type ipc:RUP ; ipc:givenName "CARLO" ; ipc:familyName "AMENDOLA" .
+ipc:RUP_6076591187 rdf:type ipc:RUP ; ipc:givenName "SERGIO" ; ipc:familyName "BARIANI" .
+ipc:RUP_5909558189 rdf:type ipc:RUP ; ipc:givenName "GIUSEPPE" ; ipc:familyName "ZIRILLI" .
+ipc:RUP_49631275F6 rdf:type ipc:RUP ; ipc:givenName "GIULIANO" ; ipc:familyName "FRANZOI" .
+ipc:RUP_38637882B9 rdf:type ipc:RUP ; ipc:givenName "ALESSANDRO" ; ipc:familyName "TURRI" .
+ipc:RUP_B8284F9385 rdf:type ipc:RUP ; ipc:givenName "CHRISTIAN" ; ipc:familyName "MESSMER" .
+ipc:RUP_B59158FFAA rdf:type ipc:RUP ; ipc:givenName "MAURIZIO" ; ipc:familyName "BURLANDO" .
+ipc:RUP_B9D34CF2B8 rdf:type ipc:RUP ; ipc:givenName "ALESSANDRO" ; ipc:familyName "FIORINDI" .
+ipc:RUP_6076876CB4 rdf:type ipc:RUP ; ipc:givenName "ANNA" ; ipc:familyName "SALONE" .
+ipc:RUP_B2E173DBBD rdf:type ipc:RUP ; ipc:givenName "MICHAEL" ; ipc:familyName "PEER" .
+ipc:RUP_48694648CE rdf:type ipc:RUP ; ipc:givenName "PAOLO" ; ipc:familyName "BOTTAGION" .
+ipc:RUP_B98EFAAB4F rdf:type ipc:RUP ; ipc:givenName "ALESSANDRO" ; ipc:familyName "CROCETTA" .
+ipc:RUP_B9811EE030 rdf:type ipc:RUP ; ipc:givenName "ROCCO" ; ipc:familyName "MINARDI" .
+ipc:RUP_B9ED8194D6 rdf:type ipc:RUP ; ipc:givenName "GIULIANA" ; ipc:familyName "CHIAMBERLANDO" .
+ipc:RUP_B9ED818403 rdf:type ipc:RUP ; ipc:givenName "FELICE" ; ipc:familyName "ZIPPO" .
+ipc:RUP_4332811CBC rdf:type ipc:RUP ; ipc:givenName "VITO" ; ipc:familyName "MAGGIORE" .
+ipc:RUP_34133376CB rdf:type ipc:RUP ; ipc:givenName "RITA" ; ipc:familyName "MAMBELLI" .
+ipc:RUP_B925CD0FA5 rdf:type ipc:RUP ; ipc:givenName "CARLO" ; ipc:familyName "INTERMITE" .
+ipc:RUP_B98522E580 rdf:type ipc:RUP ; ipc:givenName "TAMARA" ; ipc:familyName "MACAGNINO" .
+ipc:RUP_4896761701 rdf:type ipc:RUP ; ipc:givenName "ALBERTO" ; ipc:familyName "VITALE" .
+ipc:RUP_6536346B58 rdf:type ipc:RUP ; ipc:givenName "EUGENIO" ; ipc:familyName "SONNI" .
+ipc:RUP_8338463D56 rdf:type ipc:RUP ; ipc:givenName "CROCEFISSO ALESSANDRO" ; ipc:familyName "MARRA" .
+
+### WORK SUPERVISORS ###
+
+ipc:DL_8338463D56 rdf:type ipc:WorkSupervisor ; ipc:givenName "MARCO" ; ipc:familyName "CATALDO" .
+
+### ECONOMIC OPERATORS & AWARDEES ###
+
+ipc:EO_CHE152434145 rdf:type ipc:Awardee, ipc:EconomicOperator ;
+    ipc:legalName "MONDIAL PHARMA" ;
+    ipc:taxCode "CHE152434145" ;
+    ipc:hasParticipationRole ipc:SingleEconomicOperator .
+
+ipc:EO_00295420632 rdf:type ipc:Awardee , ipc:EconomicOperator ;
+    ipc:legalName "Q8 QUASER S.R.L." ;
+    ipc:taxCode "00295420632" ;
+    ipc:hasParticipationRole ipc:SingleEconomicOperator .
+
+ipc:EO_03216821201 rdf:type ipc:Awardee ;
+     ipc:legalName "GPEM S.R.L." ;
+     ipc:taxCode "03216821201" ;
+     ipc:hasParticipationRole ipc:SingleEconomicOperator .
+
+ipc:EO_04942180755 rdf:type ipc:Awardee ;
+    ipc:legalName "CO.SE.MA. S.R.L." ;
+    ipc:taxCode "04942180755" ;
+    ipc:hasParticipationRole ipc:SingleEconomicOperator .
+
+### SOA Categories ###
+
+ipc:SOA_OS3 rdf:type ipc:SOACategory ;
+    ipc:soaCode "OS 3" ;
+    rdfs:label "Plumbing and sanitary systems, kitchens, and laundry rooms" ;
+    ipc:isPrevalent true .
+
+ipc:SOA_OG1 rdf:type ipc:SOACategory ;
+    ipc:soaCode "OG 1" ;
+    rdfs:label "Civil and industrial buildings" ;
+    ipc:isPrevalent false .
+
+ipc:SOA_OS30 rdf:type ipc:SOACategory ;
+    ipc:soaCode "OS 30" ;
+    rdfs:label "Internal electrical, telephone, radio, and television systems" ;
+    ipc:isPrevalent false .
+
+### CPV ###
+
+ipc:CPV_90420000-7 rdf:type ipc:CPV ; ipc:cpvCode "90420000-7" ; rdfs:label "Sewage treatment services" ; ipc:isPrevalent true .
+ipc:CPV_33696000-5 rdf:type ipc:CPV ; ipc:cpvCode "33696000-5" ; rdfs:label "Reagents and contrast media" ; ipc:isPrevalent true .
+ipc:CPV_33690000-3 rdf:type ipc:CPV ; ipc:cpvCode "33690000-3" ; rdfs:label "Various medicinal products" ; ipc:isPrevalent true .
+ipc:CPV_09100000-0 rdf:type ipc:CPV ; ipc:cpvCode "09100000-0" ; rdfs:label "Fuels" ; ipc:isPrevalent true .
+ipc:CPV_30197643-5 rdf:type ipc:CPV ; ipc:cpvCode "30197643-5" ; rdfs:label "Photocopier paper" ; ipc:isPrevalent true .
+ipc:CPV_30213300-8 rdf:type ipc:CPV ; ipc:cpvCode "30213300-8" ; rdfs:label "Desktop computer" ; ipc:isPrevalent true .
+ipc:CPV_33120000-7 rdf:type ipc:CPV ; ipc:cpvCode "33120000-7" ; rdfs:label "Recording systems and exploration devices" ; ipc:isPrevalent true .
+ipc:CPV_85312300-2 rdf:type ipc:CPV ; ipc:cpvCode "85312300-2" ; rdfs:label "Guidance and counselling services" ; ipc:isPrevalent true .
+ipc:CPV_42120000-6 rdf:type ipc:CPV ; ipc:cpvCode "42120000-6" ; rdfs:label "Pumps and compressors" ; ipc:isPrevalent true .
+ipc:CPV_71317200-5 rdf:type ipc:CPV ; ipc:cpvCode "71317200-5" ; rdfs:label "Health and safety services" ; ipc:isPrevalent true .
+
+### CUP ###
+
+ipc:CUP_B53C22006840001 rdf:type ipc:CUP ; ipc:cupCode "B53C22006840001" .
+
+ipc:CUP_J86B20008160001 rdf:type ipc:CUP ; ipc:cupCode "J86B20008160001" .
+
+### PROCEDURES AND CONTRACTS ###
+
+ipc:Proc_B44AC3AB16 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "N. 3 AUTOMEZZI" ;
+    ipc:hasCIG ipc:CIG_B44AC3AB16 ;
+    ipc:isCalledBy ipc:SA_91224620376 ;
+    ipc:isAwardedBy ipc:SA_91224620376 ;
+    ipc:hasRUP ipc:RUP_B44AC3AB16 ;
+    ipc:PublicationDate "2024-11-18"^^xsd:date ;
+    ipc:awardDate "2024-11-21"^^xsd:date ;
+    ipc:auctionBaseValue 118937.04 ;
+    ipc:awardAmount 118937.04 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> .
+
+ipc:Proc_B0F8F3E4F5 rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "ADEGUAMENTO LINEA FANGHI DI IDA BRONZOLO ANPASSUNG DER SCHLAMMLINIE VON ARA BRANZOLL" ;
+    ipc:hasCIG ipc:CIG_B0F8F3E4F5 ;
+    ipc:isCalledBy ipc:SA_01531480216 ;
+    ipc:isAwardedBy ipc:SA_01531480216 ;
+    ipc:hasRUP ipc:RUP_B0F8F3E4F5 ;
+    ipc:PublicationDate "2024-03-27"^^xsd:date ;
+    ipc:auctionBaseValue 1967307.63 ;
+    ipc:awardAmount 1911815.96 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/021> .
+
+ipc:Proc_B083B70E6B rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "SERVIZIO DI ESECUZIONE DI PROVE SPERIMENTALI PER IL MIGLIORAMENTO DELLA GESTIONE DI PATOGENI NELLE COLTURE AGRARIE E PER LO STUDIO DI STRATEGIE DI DIFESA SOSTENIBILE – ANNI 2024 E 2025 SUDDIVISO IN CINQUE LOTTI FUNZIONALI" ;
+    ipc:hasCIG ipc:CIG_B083B70E6B ;
+    ipc:isCalledBy ipc:SA_80062590379 ;
+    ipc:isAwardedBy ipc:SA_80062590379 ;
+    ipc:hasRUP ipc:RUP_B083B70E6B ;
+    ipc:PublicationDate "2024-02-22"^^xsd:date ;
+    ipc:awardDate "2024-03-28"^^xsd:date ;
+    ipc:auctionBaseValue 46200.0 ;
+    ipc:awardAmount 34650.0 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> .
+
+ipc:Proc_B6E7CD4290 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "GARA 47716 - PSIS (LOTTO 3) - FORNITURA ED INSTALLAZIONE IN OPERA DI SISTEMI ED INFRASTRUTTURE DI SICUREZZA FISICA" ;
+    ipc:hasCIG ipc:CIG_B6E7CD4290 ;
+    ipc:isCalledBy ipc:SA_05779661007 ;
+    ipc:hasRUP ipc:RUP_B6E7CD4290 ;
+    ipc:PublicationDate "2025-05-17"^^xsd:date ;
+    ipc:auctionBaseValue 5500000.0 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/058> .
+
+ipc:Proc_60792324F2 rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "INTERVENTI URGENTI E PRIORITARI FINALIZZATI ALLA MITIGAZIONE DEL RISCHIO IDROGEOLOGICO. REALIZZAZIONE DI UNA VASCA DI ESPANSIONE E DIFESE SPONDALI NEL TERRITORIO DI CARSOLI. PRIMO STRALCIO ESECUTIVO." ;
+    ipc:hasCIG ipc:CIG_60792324F2 ;
+    ipc:isCalledBy ipc:SA_00217280668 ;
+    ipc:isAwardedBy ipc:SA_00217280668 ;
+    ipc:hasRUP ipc:RUP_60792324F2 ;
+    ipc:PublicationDate "2014-12-31"^^xsd:date ;
+    ipc:awardDate "2015-12-18"^^xsd:date ;
+    ipc:auctionBaseValue 2305934.4 ;
+    ipc:awardAmount 1802537.23 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/066> .
+
+ipc:Proc_6076591187 rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "ASSISTENZA INFORMATICA PROGETTO NET@DIS" ;
+    ipc:hasCIG ipc:CIG_6076591187 ;
+    ipc:isCalledBy ipc:SA_01429910183 ;
+    ipc:isAwardedBy ipc:SA_01429910183 ;
+    ipc:hasRUP ipc:RUP_6076591187 ;
+    ipc:PublicationDate "2014-12-29"^^xsd:date ;
+    ipc:awardDate "2014-12-29"^^xsd:date ;
+    ipc:auctionBaseValue 52570.0 ;
+    ipc:awardAmount 52570.0 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/018> .
+
+ipc:Proc_5909558189 rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "LAVORI DI MANUTENZIONE NON PROGRAMMABILE (PRONTO INTERVENTO ) ZONA TRIESTE GORIZIA ES 2015" ;
+    ipc:hasCIG ipc:CIG_5909558189 ;
+    ipc:isCalledBy ipc:SA_80208450587 ;
+    ipc:isAwardedBy ipc:SA_80208450587 ;
+    ipc:hasRUP ipc:RUP_5909558189 ;
+    ipc:PublicationDate "2014-09-10"^^xsd:date ;
+    ipc:awardDate "2014-11-24"^^xsd:date ;
+    ipc:auctionBaseValue 240000.0 ;
+    ipc:awardAmount 199097.04 .
+
+ipc:Proc_49631275F6 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "RESTAURO CASA DEL CAPITOLO IN VIA BELENZANI, 18. FORNITURA E POSA ARREDI" ;
+    ipc:hasCIG ipc:CIG_49631275F6 ;
+    ipc:isCalledBy ipc:SA_00355870221 ;
+    ipc:hasRUP ipc:RUP_49631275F6 ;
+    ipc:PublicationDate "2013-02-28"^^xsd:date ;
+    ipc:auctionBaseValue 87848.32 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/022> .
+
+ipc:Proc_38637882B9 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "PLACCHE E VITI IN TITANIO LOTTO 1" ;
+    ipc:hasCIG ipc:CIG_38637882B9 ;
+    ipc:isCalledBy ipc:SA_00913490249 ;
+    ipc:isAwardedBy ipc:SA_00913490249 ;
+    ipc:hasRUP ipc:RUP_38637882B9 ;
+    ipc:PublicationDate "2012-01-25"^^xsd:date ;
+    ipc:awardDate "2012-06-05"^^xsd:date ;
+    ipc:auctionBaseValue 88000.0 ;
+    ipc:awardAmount 127274.96 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/024> .
+
+ipc:Proc_B8284F9385 rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "MIGLIORAMENTO DELLA SICUREZZA STRADALE SULLA STRADA COMUNALE DI QUAIR CON L'ELIMINAZIONE DI TRE USCITE VERSO LA SS40" ;
+    ipc:hasCIG ipc:CIG_B8284F9385 ;
+    ipc:isCalledBy ipc:SA_82008540211 ;
+    ipc:isAwardedBy ipc:SA_82008540211 ;
+    ipc:hasRUP ipc:RUP_B8284F9385 ;
+    ipc:PublicationDate "2025-09-08"^^xsd:date ;
+    ipc:awardDate "2025-10-13"^^xsd:date ;
+    ipc:auctionBaseValue 475852.66 ;
+    ipc:awardAmount 381593.83 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/021> .
+
+ipc:Proc_B59158FFAA rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "MANUTENZIONE ORDINARIA E STRAORDINARIA DA ESEGUIRSI SULLA RETE SENTIERISTICA DEL PARCO NAZIONALE ARCIPELAGO TOSCANO - SETTORE 01 OVEST ISOLA D'ELBA" ;
+    ipc:hasCIG ipc:CIG_B59158FFAA ;
+    ipc:isCalledBy ipc:SA_91007440497 ;
+    ipc:isAwardedBy ipc:SA_91007440497 ;
+    ipc:hasRUP ipc:RUP_B59158FFAA ;
+    ipc:PublicationDate "2025-02-11"^^xsd:date ;
+    ipc:awardDate "2025-04-15"^^xsd:date ;
+    ipc:auctionBaseValue 309600.0 ;
+    ipc:awardAmount 251594.696038 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/049> .
+
+ipc:Proc_B9D34CF2B8 rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "GESTIONE DEL SERVIZIO DI INFORMAZIONE ED ACCOGLIENZA TURISTICA DEL COMUNE DI PISA" ;
+    ipc:hasCIG ipc:CIG_B9D34CF2B8 ;
+    ipc:isCalledBy ipc:SA_01707050504 ;
+    ipc:isAwardedBy ipc:SA_01707050504 ;
+    ipc:hasRUP ipc:RUP_B9D34CF2B8 ;
+    ipc:PublicationDate "2025-12-30"^^xsd:date ;
+    ipc:awardDate "2025-12-29"^^xsd:date ;
+    ipc:auctionBaseValue 119236.16 ;
+    ipc:awardAmount 119236.16 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/050> .
+
+ipc:Proc_6076876CB4 rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "SERVIZIO PER LA REALIZZAZIONE DI ATTIVITÀ LUDICO EDUCATIVE PER L'INFANZIA DELLA 'CITTÀ DEI RAGAZZI' - EDIZIONE 2015" ;
+    ipc:hasCIG ipc:CIG_6076876CB4 ;
+    ipc:isCalledBy ipc:SA_80016350821 ;
+    ipc:isAwardedBy ipc:SA_80016350821 ;
+    ipc:hasRUP ipc:RUP_6076876CB4 ;
+    ipc:PublicationDate "2014-12-30"^^xsd:date ;
+    ipc:awardDate "2015-08-17"^^xsd:date ;
+    ipc:auctionBaseValue 127666.0 ;
+    ipc:awardAmount 98204.0 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/082> .
+
+ipc:Proc_B2E173DBBD rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "PROGETTO ESECUTIVO PER LA REALIZZAZIONE DI IMPIANTI FOTOVOLTAICI SUI TETTI DELLA LIBERA UNIVERSITÀ DI BOLZANO, SEDI DI BOLZANO E BRESSANONE. – IDO 12099" ;
+    ipc:hasCIG ipc:CIG_B2E173DBBD ;
+    ipc:isCalledBy ipc:SA_94060760215 ;
+    ipc:isAwardedBy ipc:SA_94060760215 ;
+    ipc:hasRUP ipc:RUP_B2E173DBBD ;
+    ipc:PublicationDate "2024-08-30"^^xsd:date ;
+    ipc:awardDate "2024-08-29"^^xsd:date ;
+    ipc:auctionBaseValue 70000.0 ;
+    ipc:awardAmount 70000.0 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/021> .
+
+ipc:Proc_48694648CE rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "RECUPERO DEI CANALI IRRIGUI SAN CARLO - MERLENGO E SANTANDRÀ - CAMALÒ ALLE FUNZIONI DI SCOLO - 1° STRALCIO" ;
+    ipc:hasCIG ipc:CIG_48694648CE ;
+    ipc:isCalledBy ipc:SA_04355020266 ;
+    ipc:isAwardedBy ipc:SA_04355020266 ;
+    ipc:hasRUP ipc:RUP_48694648CE ;
+    ipc:PublicationDate "2013-01-21"^^xsd:date ;
+    ipc:awardDate "2013-02-07"^^xsd:date ;
+    ipc:auctionBaseValue 81451.1 ;
+    ipc:awardAmount 65001.042 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/026> .
+
+ipc:Proc_B98EFAAB4F rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "SERVIZIO DI TRATTAMENTO ACQUE REFLUE MARISCUOLA TARANTO" ;
+    ipc:description "SISTEMI DI DEPURAZIONE" ;
+    ipc:hasCIG ipc:CIG_B98EFAAB4F ;
+    ipc:hasProcedureType ipc:OpenProcedure ;
+    ipc:isCalledBy ipc:SA_80014700738 ;
+    ipc:hasRUP ipc:RUP_B98EFAAB4F ;
+    ipc:hasCPV ipc:CPV_90420000-7 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2025-12-15"^^xsd:date ;
+    ipc:tenderDeadline "2026-01-20T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 571900.00 ;
+    ipc:isPNRR false ;
+    ipc:isPNC false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/073> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/073027-(1948-01-01)> .
+
+ipc:Proc_B9811EE030 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "PROCEDURA APERTA PER L'APPALTO DI ACQUISIZIONE IN SERVICE QUINQUENNALE DI APPARECCHIATURE DIAGNOSTICHE DI LABORATORIO CON FORNITURA DI REAGENTI E RELATIVO MATERIALE DI CONSUMO PER L'ASP DI CALTANISSETTA" ;
+    ipc:description "COAUGULAZIONE" ;
+    ipc:hasCIG ipc:CIG_B9811EE030 ;
+    ipc:hasProcedureType ipc:OpenProcedure ;
+    ipc:isCalledBy ipc:SA_01825570854 ;
+    ipc:hasRUP ipc:RUP_B9811EE030 ;
+    ipc:hasCPV ipc:CPV_33696000-5 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2025-12-11"^^xsd:date ;
+    ipc:tenderDeadline "2026-01-29T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 16950000.00 ;
+    ipc:isPNRR false ;
+    ipc:isPNC false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/085> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/085004-(1948-01-01)> ;
+    ipc:hasSector ipc:OrdinarySector .
+
+ipc:Proc_B9ED8194D6 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "FARMACI ESTERI SCR2026" ;
+    ipc:description "FE 2026 L _2A_" ;
+    ipc:hasCIG ipc:CIG_B9ED8194D6 ;
+    ipc:hasProcedureType ipc:DirectAwardInFramework ;
+    ipc:isGeneratedBy [ 
+        rdf:type ipc:FrameworkAgreement ; 
+        ipc:hasCIG ipc:CIG_B783F81B82 
+    ] ;
+    ipc:isCalledBy ipc:SA_09735650013 ;
+    ipc:hasRUP ipc:RUP_B9ED8194D6 ;
+    ipc:hasCPV ipc:CPV_33690000-3 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2026-01-12"^^xsd:date ;
+    ipc:awardDate "2025-12-03"^^xsd:date ;
+    ipc:estimatedValue 1062.00 ;
+    ipc:awardAmount 1062.00 ;
+    ipc:hasAwardee ipc:EO_CHE152434145 ;
+    ipc:isPNRR false ;
+    ipc:isPNC false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/001> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/001090-(1948-01-01)> .
+
+
+ipc:Proc_B9ED818403 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "FORNITURA DI GASOLIO DA RISCALDAMENTO DA EFFETTUARSI PRESSO IL PLESSO SCOLASTICO PESTALOZZI" ;
+    ipc:hasCIG ipc:CIG_B9ED818403 ;
+    ipc:hasProcedureType ipc:DirectAwardInFramework ;
+    ipc:isGeneratedBy [ 
+        rdf:type ipc:FrameworkAgreement ; 
+        ipc:hasCIG ipc:CIG_A030EDB934 
+    ] ;
+    ipc:isCalledBy ipc:SA_80005670619 ;
+    ipc:hasRUP ipc:RUP_B9ED818403 ;
+    ipc:hasCPV ipc:CPV_09100000-0 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2026-01-12"^^xsd:date ;
+    ipc:awardDate "2026-01-12"^^xsd:date ;
+    ipc:estimatedValue 1800.00 ;
+    ipc:awardAmount 1800.00 ;
+    ipc:hasAwardee ipc:EO_00295420632 ;
+    ipc:isPNRR false ;
+    ipc:isPNC false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/061> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/061042-(1948-01-01)> .
+
+ipc:Proc_4332811CBC rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "CARTA BIANCA" ;
+    ipc:hasCIG ipc:CIG_4332811CBC ;
+    ipc:hasProcedureType ipc:DirectAwardProcedure ;
+    ipc:isCalledBy ipc:SA_80007010376 ;
+    ipc:hasRUP ipc:RUP_4332811CBC ;
+    ipc:hasCPV ipc:CPV_30197643-5 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2012-06-12"^^xsd:date ;
+    ipc:tenderDeadline "2012-06-19T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 573.60 ;
+    ipc:auctionBaseValue 573.60 ;
+    ipc:isPNRR false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/037006-(1948-01-01)> .
+
+
+ipc:Proc_34133376CB rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "ACQUISTO DUE PC DESKTOP PER SEGRETERIA AMMINISTRATIVA" ;
+    ipc:hasCIG ipc:CIG_34133376CB ;
+    ipc:hasProcedureType ipc:DirectAwardProcedure ;
+    ipc:isCalledBy ipc:SA_80007010376 ;
+    ipc:hasRUP ipc:RUP_34133376CB ;
+    ipc:hasCPV ipc:CPV_30213300-8 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2011-10-13"^^xsd:date ;
+    ipc:tenderDeadline "2011-10-14T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 847.80 ;
+    ipc:auctionBaseValue 847.80 ;
+    ipc:isPNRR false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/037006-(1948-01-01)> .
+
+ipc:Proc_B925CD0FA5 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "FORNITURA DI SISTEMA DI TRACKING UMANO MARKERLESS PER IL PER LE ESIGENZE DEL DIMEC DELL'ALMA MATER STUDIORUM UNIVERSITÀ DI BOLOGNA" ;
+    ipc:hasCIG ipc:CIG_B925CD0FA5 ;
+    ipc:hasCUP ipc:CUP_B53C22006840001 ;
+    ipc:hasProcedureType ipc:DirectAwardProcedure ;
+    ipc:isCalledBy ipc:SA_80007010376 ;
+    ipc:hasRUP ipc:RUP_B925CD0FA5 ;
+    ipc:hasCPV ipc:CPV_30213300-8 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:isPNRR true ;
+    ipc:isPNC true ;
+    ipc:awardDate "2025-11-18"^^xsd:date ;
+    ipc:tenderDeadline "2025-11-18T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 48250.00 ;
+    ipc:awardAmount 48250.00 ;
+    ipc:hasAwardee ipc:EO_03216821201 ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/037006-(1948-01-01)> .
+
+ipc:Proc_B98522E580 rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "PROCEDURA APERTA PER AFFIDAMENTO DI UN SERVIZIO DI FRONT OFFICE ACCOGLIENZA E TUTORATO SPECIALIZZATO A BENEFICIO DI SPECIFICI TARGET DI STUDENTI E STUDENTESSE ISCRITTI O CHE INTENDONO ISCRIVERSI A UN CORSO DI STUDI ATTIVATO DALLA ALMA MATER STUDIORUM UNIVERSITA DI BOLOGNA" ;
+    ipc:hasCIG ipc:CIG_B98522E580 ;
+    ipc:hasProcedureType ipc:OpenProcedure ;
+    ipc:isCalledBy ipc:SA_80007010376 ;
+    ipc:hasRUP ipc:RUP_B98522E580 ;
+    ipc:hasCPV ipc:CPV_85312300-2 ;
+    ipc:hasSector ipc:OrdinarySector ;
+    ipc:PublicationDate "2025-12-11"^^xsd:date ;
+    ipc:tenderDeadline "2026-01-28T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 1148000.00 ;
+    ipc:auctionBaseValue 1148000.00 ;
+    ipc:isPNRR false ;
+    ipc:isPNC false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/037006-(1948-01-01)> .
+
+ipc:Proc_4896761701 rdf:type ipc:SuppliesContract, ipc:Procedure ;
+    ipc:title "APPALTI FORNITURA DI ELETTROPOMPE SOMMERSE PER SOLLEVAMENTO ACQUA DESTINATA AL CONSUMO UMANO C/O I MAGAZZINI DI PADERNO DUGNANO E ROZZANO" ;
+    ipc:hasCIG ipc:CIG_4896761701 ;
+    ipc:hasProcedureType ipc:NegotiatedProcedureWithoutPublication ;
+    ipc:isCalledBy ipc:SA_03988160960 ;
+    ipc:hasRUP ipc:RUP_4896761701 ;
+    ipc:hasCPV ipc:CPV_42120000-6 ;
+    ipc:hasSector ipc:SpecialSector ;
+    ipc:PublicationDate "2013-01-29"^^xsd:date ;
+    ipc:tenderDeadline "2013-02-19T23:59:59"^^xsd:dateTime ;
+    ipc:estimatedValue 600000.00 ;
+    ipc:auctionBaseValue 600000.00 ;
+    ipc:isPNRR false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/015> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/015146-(1948-01-01)> .
+
+ipc:Proc_6536346B58 rdf:type ipc:ServicesContract, ipc:Procedure ;
+    ipc:title "SERVIZI DI PRIMO SOCCORSO AEROPORTUALE" ;
+    ipc:hasCIG ipc:CIG_6536346B58 ;
+    ipc:hasProcedureType ipc:DirectAwardProcedure ;
+    ipc:isCalledBy ipc:SA_01764970792 ;
+    ipc:hasRUP ipc:RUP_6536346B58 ;
+    ipc:hasCPV ipc:CPV_71317200-5 ;
+    ipc:hasSector ipc:SpecialSector ;
+    ipc:PublicationDate "2015-12-18"^^xsd:date ;
+    ipc:estimatedValue 102000.00 ;
+    ipc:auctionBaseValue 102000.00 ;
+    ipc:isPNRR false ;
+    ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/079> ;
+    ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/079160-(1968-11-28)> .
+
+ipc:Proc_8338463D56 rdf:type ipc:WorksContract, ipc:Procedure ;
+    ipc:title "DECRETO DEL MINISTERO DELL'ISTRUZIONE, DELL'UNIVERSITÀ E DELLA RICERCA 13 FEBBRAIO 2019, N.101. ADEGUAMENTO ALLA NORMATIVA ANTINCENDIO DELL'EDIFICIO SCOLASTICO SEDE SEDE DEL LICEO G. PALMIERI DI LECCE, SITO AL VIALE DELL'UNIVERSITÀ" ;
+   ipc:hasCIG ipc:CIG_8338463D56 ;
+   ipc:hasCUP ipc:CUP_J86B20008160001 ;
+   ipc:hasProcedureType ipc:NegotiatedProcedureWithoutPublication ;
+   ipc:isCalledBy ipc:SA_80000840753 ;
+   ipc:hasRUP ipc:RUP_8338463D56 ;
+   ipc:hasWorkSupervisor ipc:DL_8338463D56 ;
+   ipc:hasSector ipc:OrdinarySector ;
+   ipc:requiresSOA ipc:SOA_OS3, ipc:SOA_OG1, ipc:SOA_OS30 ;
+   ipc:PublicationDate "2020-06-18"^^xsd:date ;
+   ipc:awardDate "2020-07-30"^^xsd:date ;
+   ipc:estimatedValue 46961.19 ;
+   ipc:awardAmount 33496.84 ;
+   ipc:hasAwardee ipc:EO_04942180755 ;
+   ipc:hasAwardCriterion ipc:LowestPrice ;
+   ipc:hasProvinceLocation <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/075> ;
+   ipc:atCity <https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/075035-(1948-01-01)> .
+
+### CIG CODES ###
+
+ipc:CIG_B44AC3AB16 rdf:type ipc:CIG ; ipc:cigValue "B44AC3AB16" .
+ipc:CIG_B0F8F3E4F5 rdf:type ipc:CIG ; ipc:cigValue "B0F8F3E4F5" .
+ipc:CIG_B083B70E6B rdf:type ipc:CIG ; ipc:cigValue "B083B70E6B" .
+ipc:CIG_B6E7CD4290 rdf:type ipc:CIG ; ipc:cigValue "B6E7CD4290" .
+ipc:CIG_60792324F2 rdf:type ipc:CIG ; ipc:cigValue "60792324F2" .
+ipc:CIG_6076591187 rdf:type ipc:CIG ; ipc:cigValue "6076591187" .
+ipc:CIG_5909558189 rdf:type ipc:CIG ; ipc:cigValue "5909558189" .
+ipc:CIG_49631275F6 rdf:type ipc:CIG ; ipc:cigValue "49631275F6" .
+ipc:CIG_38637882B9 rdf:type ipc:CIG ; ipc:cigValue "38637882B9" .
+ipc:CIG_B8284F9385 rdf:type ipc:CIG ; ipc:cigValue "B8284F9385" .
+ipc:CIG_B59158FFAA rdf:type ipc:CIG ; ipc:cigValue "B59158FFAA" .
+ipc:CIG_B9D34CF2B8 rdf:type ipc:CIG ; ipc:cigValue "B9D34CF2B8" .
+ipc:CIG_6076876CB4 rdf:type ipc:CIG ; ipc:cigValue "6076876CB4" .
+ipc:CIG_B2E173DBBD rdf:type ipc:CIG ; ipc:cigValue "B2E173DBBD" .
+ipc:CIG_B98EFAAB4F rdf:type ipc:CIG ; ipc:cigValue "B98EFAAB4F" .
+ipc:CIG_B9811EE030 rdf:type ipc:CIG ; ipc:cigValue "B9811EE030" .
+ipc:CIG_B9ED8194D6 rdf:type ipc:CIG ; ipc:cigValue "B9ED8194D6" .
+ipc:CIG_B783F81B82 rdf:type ipc:CIG ; ipc:cigValue "B783F81B82" .
+ipc:CIG_B9ED818403 rdf:type ipc:CIG ; ipc:cigValue "B9ED818403" .
+ipc:CIG_A030EDB934 rdf:type ipc:CIG ; ipc:cigValue "A030EDB934" .
+ipc:CIG_4332811CBC rdf:type ipc:CIG ; ipc:cigValue "4332811CBC" .
+ipc:CIG_34133376CB rdf:type ipc:CIG ; ipc:cigValue "34133376CB" .
+ipc:CIG_B925CD0FA5 rdf:type ipc:CIG ; ipc:cigValue "B925CD0FA5" .
+ipc:CIG_B98522E580 rdf:type ipc:CIG ; ipc:cigValue "B98522E580" .
+ipc:CIG_4896761701 rdf:type ipc:CIG ; ipc:cigValue "4896761701" .
+ipc:CIG_6536346B58 rdf:type ipc:CIG ; ipc:cigValue "6536346B58" .
+ipc:CIG_8338463D56 rdf:type ipc:CIG ; ipc:cigValue "8338463D56" .
+
+### PROVINCES & CITIES ###
+
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/021> rdf:type clv:Province ; rdfs:label "Bolzano/Bozen" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> rdf:type clv:Province ; rdfs:label "Bologna" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/058> rdf:type clv:Province ; rdfs:label "Roma" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/066> rdf:type clv:Province ; rdfs:label "L'Aquila" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/018> rdf:type clv:Province ; rdfs:label "Pavia" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/022> rdf:type clv:Province ; rdfs:label "Trento" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/024> rdf:type clv:Province ; rdfs:label "Vicenza" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/049> rdf:type clv:Province ; rdfs:label "Livorno" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/050> rdf:type clv:Province ; rdfs:label "Pisa" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/082> rdf:type clv:Province ; rdfs:label "Palermo" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/026> rdf:type clv:Province ; rdfs:label "Treviso" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/073> rdf:type clv:Province ; rdfs:label "Taranto" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/085> rdf:type clv:Province ; rdfs:label "Caltanissetta"  ; ipc:nutsCode "ITG15" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/001> rdf:type clv:Province ; rdfs:label "Torino" ; ipc:nutsCode "ITC11" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/061> rdf:type clv:Province ; rdfs:label "Caserta" ; ipc:nutsCode "ITF31" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/037> rdf:type clv:Province ; rdfs:label "Bologna" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/015> rdf:type clv:Province ; rdfs:label "Milano" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/079> rdf:type clv:Province ; rdfs:label "Catanzaro" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/provinces/075> rdf:type clv:Province ; rdfs:label "Lecce" . 
+
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/073027-(1948-01-01)> rdf:type clv:City ; rdfs:label "Taranto" ; ipc:istatCode "073027" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/085004-(1948-01-01)> rdf:type clv:City ; rdfs:label "Caltanissetta" ; ipc:istatCode "085004" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/001090-(1948-01-01)> rdf:type clv:City ; rdfs:label "Collegno" ; ipc:istatCode "001090" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/061042-(1948-01-01)> rdf:type clv:City ; rdfs:label "Grazzanise" ; ipc:istatCode "061042" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/037006-(1948-01-01)> rdf:type clv:City ; rdfs:label "Bologna" ; ipc:istatCode "037006" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/015146-(1948-01-01)> rdf:type clv:City ; rdfs:label "Milano" ; ipc:istatCode "015146" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/079160-(1968-11-28)> rdf:type clv:City ; rdfs:label "Lamezia Terme" ; ipc:istatCode "079160" .
+<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/075035-(1948-01-01)> rdf:type clv:City ; rdfs:label "Lecce" ; ipc:istatCode "075035" .
+
+
